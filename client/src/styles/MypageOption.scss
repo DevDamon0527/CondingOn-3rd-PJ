@@ -75,6 +75,9 @@
     max-width: 40em;
     margin-top: 3em;
     height: calc(100vh - 8em);
+    background-color: white;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
 
     .settingProfile {
         height: 56px;

@@ -122,7 +122,7 @@ function MulterMypage() {
                             className="input-file-button"
                             htmlFor="input-file"
                         >
-                            프로필 설정
+                            사진 선택
                         </label>
                         <input
                             type="file"

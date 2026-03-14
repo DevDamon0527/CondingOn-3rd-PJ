@@ -1,13 +1,24 @@
 @import './Common.scss';
 .multer {
-    height: calc(100vh - 6em);
+    height: calc(100vh - 3em);
 }
 
 .multer-form-container {
-    height: calc(100vh - 3em - 3em);
-    @include flex-center();
+    width: 100%;
+    max-width: 40em;
+    height: calc(100vh - 3em);
+    display: flex;
     flex-direction: column;
-    background-color: rgb(245, 245, 245);
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: white;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 0 16px 5em;
+    box-sizing: border-box;
+    overflow: hidden;
 
     .profile-image {
         > img {
@@ -34,5 +45,10 @@
 
     .edit-ConfirmBtn {
         @include edit-ConfirmBtn();
+        position: absolute;
+        bottom: 1.5em;
+        left: 16px;
+        right: 16px;
+        width: auto;
     }
 }
