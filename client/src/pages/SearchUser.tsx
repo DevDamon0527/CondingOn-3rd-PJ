@@ -65,7 +65,7 @@ function SearchUser() {
             });
             setSortedPostData(sortedPostDatas);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
@@ -110,11 +110,7 @@ function SearchUser() {
                     alt=""
                     onClick={() => navigate(-1)}
                 />
-                <img
-                    className="userPageLogo"
-                    src="/images/userPage.png"
-                    alt=""
-                />
+                <span className="userpage-header-title">프로필</span>
             </div>
 
             <div className="userpage-container">

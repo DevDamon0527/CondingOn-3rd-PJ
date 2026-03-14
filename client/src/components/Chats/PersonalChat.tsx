@@ -8,9 +8,7 @@ function PersonalChat() {
         <>
             {/* 설정 헤드 부분 */}
             <div className="chatList-C-Header">
-                <div>
-                    <img src="/images/ChatList.png" alt="" />
-                </div>
+                <span className="chatlist-header-title">메시지</span>
             </div>
             <div className="chatList-container">
                 <div className="chatList-Content">

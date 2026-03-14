@@ -3,12 +3,29 @@
     height: 3em;
     top: 0;
     width: 100%;
-    padding: 0.75rem 1rem;
-    box-shadow: inset 0px 0px 5px rgba(192, 191, 191, 0.5);
+    padding: 0 1rem;
+    background-color: white;
+    border-bottom: 1.5px solid #eeeeee;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
     position: fixed;
-    @include flex-space-between();
-    .gaerOption {
+    z-index: 100;
+    display: flex;
+    align-items: center;
+
+    .mypage-header-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: -0.3px;
+    }
+
+    > a {
         margin-left: auto;
+    }
+
+    .gaerOption {
+        display: flex;
+        align-items: center;
     }
 }
 .mypage-container {

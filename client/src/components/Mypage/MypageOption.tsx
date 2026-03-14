@@ -84,15 +84,16 @@ function MypageOption() {
                     </div>
                 </Link>
                 <div className="settingBack">설정</div>
-                <div className="settingLogout">로그아웃</div>
-                <div className="settingLogoutImage">
-                    <img
-                        src="/images/Logout.png"
-                        alt=""
-                        onClick={() => {
-                            userlogout();
-                        }}
-                    />
+                <div
+                    className="logout-btn"
+                    onClick={() => {
+                        userlogout();
+                    }}
+                >
+                    <span className="settingLogout">로그아웃</span>
+                    <div className="settingLogoutImage">
+                        <img src="/images/Logout.png" alt="" />
+                    </div>
                 </div>
             </div>
             <div className="myPageOption-container">

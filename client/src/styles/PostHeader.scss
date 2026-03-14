@@ -3,16 +3,25 @@
     height: 3em;
     display: flex;
     align-items: center;
-    box-shadow: inset 0px 0px 5px rgba(192, 191, 191, 0.5);
+    background-color: white;
+    border-bottom: 1.5px solid #eeeeee;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
 
 .posts-title {
-    width: 58px;
-    height: 20px;
-    background-image: url('../img/posts-title.png');
-    background-size: cover;
-    cursor: pointer;
-    margin-left: 12px;
+    margin-left: 16px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.3px;
+    width: auto;
+    height: auto;
+    background-image: none;
+    cursor: default;
+
+    &::before {
+        content: '게시물';
+    }
 }
 
 .alertArrived {
@@ -22,6 +31,14 @@
     background-size: cover;
     cursor: pointer;
     margin-left: auto;
+    border-radius: 6px;
+    transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        filter: brightness(0.75);
+        transform: scale(1.12);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .alertAllChecked {
@@ -31,15 +48,35 @@
     background-size: cover;
     cursor: pointer;
     margin-left: auto;
+    border-radius: 6px;
+    transition: filter 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        filter: brightness(0.75);
+        transform: scale(1.12);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .create-post {
-    width: 40px;
-    height: 40px;
-    background-image: url('../img/create-post.png');
-    background-size: cover;
+    padding: 5px 13px;
+    border: 1.5px solid #37af6a;
+    border-radius: 20px;
+    color: #37af6a;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    margin-left: 24px;
-    margin-right: 6px;
-    border: none;
+    background-color: white;
+    background-image: none;
+    width: auto;
+    height: auto;
+    margin-left: 12px;
+    margin-right: 12px;
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        background-color: #37af6a;
+        color: white;
+        box-shadow: 0 2px 8px rgba(55, 175, 106, 0.3);
+    }
 }

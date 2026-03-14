@@ -72,8 +72,8 @@ function PostsPage() {
             });
             setCulturePosts(res.data.PostsDatas);
         } catch (error: any) {
-            if (error.response.status) {
-                errorHandler(error.response.status);
+            if (error.response?.status) {
+                errorHandler(error.response?.status);
             }
             console.log('error', error);
         }
@@ -91,8 +91,8 @@ function PostsPage() {
             });
             setLanguagePosts(res.data.PostsDatas);
         } catch (error: any) {
-            if (error.response.status) {
-                errorHandler(error.response.status);
+            if (error.response?.status) {
+                errorHandler(error.response?.status);
             }
             console.log('error', error);
         }
@@ -110,7 +110,7 @@ function PostsPage() {
             });
             setNewAlarmNum(res.data.newAlarmNumber);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error:', error);
         }
     };

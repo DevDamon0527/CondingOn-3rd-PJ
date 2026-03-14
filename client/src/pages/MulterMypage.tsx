@@ -40,7 +40,7 @@ function MulterMypage() {
                 `${process.env.REACT_APP_SERVERURL}${res.data.userDataObj.profileImgPath}`
             );
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };

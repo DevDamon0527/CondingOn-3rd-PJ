@@ -59,7 +59,7 @@ function Mypage() {
             setsortedPostData(sortedPostDatas);
         } catch (error: any) {
             console.log('error', error);
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
         }
     };
 
@@ -92,9 +92,7 @@ function Mypage() {
     return (
         <>
             <div className="logoC">
-                <div>
-                    <img src="images/MypageLogo.png" alt="" />
-                </div>
+                <span className="mypage-header-title">마이페이지</span>
                 <Link to={'/mypage/option'}>
                     <div className="gaerOption">
                         <img src="images/Gear.png" alt="" />

@@ -47,7 +47,7 @@ function CulturePostDetailPage() {
             setLikeCount(res.data.likeCount);
             setIsLiked(res.data.didLike);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
@@ -69,7 +69,7 @@ function CulturePostDetailPage() {
             });
             getComments();
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
@@ -82,7 +82,7 @@ function CulturePostDetailPage() {
             });
             setComments(res.data.Comments);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };

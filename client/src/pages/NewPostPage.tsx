@@ -69,7 +69,7 @@ function NewPostPage() {
                     navigate('/posts');
                 }
             } catch (error: any) {
-                errorHandler(error.response.status);
+                errorHandler(error.response?.status);
                 console.log(error);
             }
         } else {
@@ -93,7 +93,7 @@ function NewPostPage() {
                     navigate('/posts');
                 }
             } catch (error: any) {
-                errorHandler(error.response.status);
+                errorHandler(error.response?.status);
                 console.log(error);
             }
         }

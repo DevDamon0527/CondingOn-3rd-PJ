@@ -32,7 +32,7 @@ function MonoChatHeader() {
                     onClick={() => {
                         handleConfirmModal();
                     }}
-                ></div>
+                >방 생성</div>
             </div>
         </>
     );

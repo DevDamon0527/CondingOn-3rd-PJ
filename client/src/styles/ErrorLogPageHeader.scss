@@ -4,16 +4,21 @@
     background-color: white;
     display: flex;
     align-items: center;
-
-    box-shadow: inset 0px 0px 5px rgba(192, 191, 191, 0.5);
+    border-bottom: 1.5px solid #eeeeee;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 
     .errorlog-logo {
-        width: 97px;
-        height: 36px;
-        margin-left: 24px;
-        background-image: url('../img/ErrorLog.png');
-        background-size: auto;
-        background-repeat: no-repeat;
-        background-position-y: center;
+        margin-left: 16px;
+        font-size: 17px;
+        font-weight: 700;
+        color: #1a1a1a;
+        letter-spacing: -0.3px;
+        width: auto;
+        height: auto;
+        background-image: none;
+
+        &::before {
+            content: '오류로그';
+        }
     }
 }

@@ -22,7 +22,7 @@ function Header(props: any) {
                 <button
                     className="create-post"
                     onClick={() => navigate('/newpost')}
-                ></button>
+                >글 쓰기</button>
             </div>
         </>
     );

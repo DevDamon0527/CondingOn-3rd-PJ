@@ -47,7 +47,7 @@ function LanguagePostDetailPage() {
             setLikeCount(res.data.likeCount);
             setIsLiked(res.data.didLike);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
@@ -70,7 +70,7 @@ function LanguagePostDetailPage() {
             });
             getComments();
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
@@ -83,7 +83,7 @@ function LanguagePostDetailPage() {
             });
             setComments(res.data.Comments);
         } catch (error: any) {
-            errorHandler(error.response.status);
+            errorHandler(error.response?.status);
             console.log('error', error);
         }
     };
