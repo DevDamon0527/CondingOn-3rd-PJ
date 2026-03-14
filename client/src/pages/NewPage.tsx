@@ -151,7 +151,16 @@ const ChatRoomPage: React.FC = () => {
             regex = regex || new RegExp('');
 
             if (!regex.test(newMessage)) {
-                alert(`Please enter the message in ${allowedLanguage}`);
+                const langNameMap: Record<string, string> = {
+                    korean: '한국어',
+                    english: '영어',
+                    chinese: '중국어',
+                    japanese: '일본어',
+                    french: '프랑스어',
+                    german: '독일어',
+                };
+                const langKo = langNameMap[allowedLanguage.toLowerCase()] || allowedLanguage;
+                alert(`이 채팅방은 ${langKo}만 사용할 수 있습니다.`);
                 return;
             }
         }
@@ -679,9 +688,7 @@ const ChatRoomPage: React.FC = () => {
                 <div className="message-input-container">
                     <input
                         type="text"
-                        placeholder={`Type your message (in ${
-                            allowedLanguage || 'any language'
-                        })`}
+                        placeholder={`메시지를 입력하세요${allowedLanguage ? ` (${allowedLanguage})` : ''}`}
                         className="message-input"
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
@@ -695,7 +702,7 @@ const ChatRoomPage: React.FC = () => {
                         }}
                     />
                     <button onClick={handleSendMessage} className="send-button">
-                        Send
+                        전송
                     </button>
                 </div>
             </div>

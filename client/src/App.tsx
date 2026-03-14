@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/App.scss';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -50,7 +50,7 @@ function App() {
                     <Route path="/newpost" element={<NewPostPage />} />
                     <Route path="/posts" element={<PostsPage />} />
                     {cookies['id'] && cookies['id'].length > 3 ? (
-                        <Route path="/" element={<PostsPage />} />
+                        <Route path="/" element={<Navigate to="/posts" replace />} />
                     ) : (
                         <Route path="/" element={<LoginPage />} />
                     )}

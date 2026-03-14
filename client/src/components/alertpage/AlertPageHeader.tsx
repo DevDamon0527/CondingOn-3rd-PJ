@@ -9,7 +9,7 @@ function AlertPageHeader() {
         <>
             <div className='alert-header-container'>
                 <div className='back-arrow' onClick={()=>navigate('/posts')}></div>
-                <div className ='alert-header-text'>Alerts</div>
+                <div className ='alert-header-text'>알림</div>
             </div>
         </>
      );

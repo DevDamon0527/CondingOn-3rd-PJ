@@ -75,14 +75,14 @@ function MypageEditPassword() {
                         <img src="/images/BackPoint.png" alt="" />
                     </div>
                 </Link>
-                <div className="settingBack">Edit Password</div>
+                <div className="settingBack">비밀번호 변경</div>
             </div>
             <div className="myPageOption-container multer2">
                 {/* 내용 */}
                 <div className="editPassword-Container">
-                    <div className="editContainer-title">Password</div>
+                    <div className="editContainer-title">비밀번호</div>
                     <div className="editContainer-smalltitle">
-                        Please enter the password to be modified
+                        변경할 비밀번호를 입력해주세요
                     </div>
                     <form action="" className="editPassword-Form">
                         <label htmlFor="">현재 비밀번호</label>
@@ -114,7 +114,7 @@ function MypageEditPassword() {
                             submitEditForm(e)
                         }
                     >
-                        Confirm
+                        확인
                     </button>
                 </div>
             </div>

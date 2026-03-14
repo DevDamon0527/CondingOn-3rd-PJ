@@ -108,7 +108,7 @@ function MulterMypage() {
                         <img src="/images/BackPoint.png" alt="" />
                     </div>
                 </Link>
-                <div className="settingBack">Edit Profile Image</div>
+                <div className="settingBack">프로필 이미지 변경</div>
             </div>
             <div className="myPageOption-container multer">
                 <div className="multer-form-container">

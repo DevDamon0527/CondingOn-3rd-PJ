@@ -83,8 +83,8 @@ function MypageOption() {
                         <img src="/images/BackPoint.png" alt="" />
                     </div>
                 </Link>
-                <div className="settingBack">Setting</div>
-                <div className="settingLogout">Logout</div>
+                <div className="settingBack">설정</div>
+                <div className="settingLogout">로그아웃</div>
                 <div className="settingLogoutImage">
                     <img
                         src="/images/Logout.png"
@@ -139,21 +139,21 @@ function MypageOption() {
                                 <img src="/images/DecoBar.png" alt="" />
                             </div>
                             <div className="settingDetail-Header-text">
-                                My Info
+                                내 정보
                             </div>
                         </div>
                         {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
-                                <div>Name</div>
+                                <div>닉네임</div>
                                 <div className="result-Content-items">
                                     {userData.name}
                                 </div>
                             </div>
                             <div className="settingDetail-Content-items">
-                                <div>Password</div>
+                                <div>비밀번호</div>
                                 <div className="result-Content-items">
-                                    Change
+                                    변경
                                 </div>
                                 <Link to={'/mypage/edit/password'}>
                                     <div className="rightPointImgDiv">
@@ -165,11 +165,11 @@ function MypageOption() {
                                 </Link>
                             </div>
                             <div className="settingDetail-Content-items">
-                                <div>Gender</div>
+                                <div>성별</div>
                                 <div className="result-Content-items">
                                     {userData.gender === 'm'
-                                        ? 'male'
-                                        : 'female'}
+                                        ? '남성'
+                                        : '여성'}
                                 </div>
                             </div>
                         </div>
@@ -181,19 +181,19 @@ function MypageOption() {
                                 <img src="/images/DecoBar.png" alt="" />
                             </div>
                             <div className="settingDetail-Header-text">
-                                Learning Laguage Info
+                                학습 언어 정보
                             </div>
                         </div>
                         {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
-                                <div>Native Language</div>
+                                <div>모국어</div>
                                 <div className="result-Content-items">
                                     {userData.firLang}
                                 </div>
                             </div>
                             <div className="settingDetail-Content-items">
-                                <div>Learning Language</div>
+                                <div>학습 언어</div>
                                 <div className="result-Content-items">
                                     {learningLang[0]}
                                 </div>
@@ -216,13 +216,13 @@ function MypageOption() {
                                 <img src="/images/DecoBar.png" alt="" />
                             </div>
                             <div className="settingDetail-Header-text">
-                                Service Info
+                                서비스 정보
                             </div>
                         </div>
                         {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
-                                <div className="withdrawal">Withdrawal</div>
+                                <div className="withdrawal">회원 탈퇴</div>
                                 <div className="result-Content-items"></div>
                                 <div className="userdelete-div">
                                     <img

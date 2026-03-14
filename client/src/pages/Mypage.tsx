@@ -117,7 +117,7 @@ function Mypage() {
                         } `}
                         onClick={() => toggleView(true)}
                     >
-                        Profile
+                        프로필
                     </div>
                     <div
                         className={`postClick ${
@@ -125,7 +125,7 @@ function Mypage() {
                         } `}
                         onClick={() => toggleView(false)}
                     >
-                        POST
+                        게시물
                     </div>
                 </div>
                 {showProfile ? (

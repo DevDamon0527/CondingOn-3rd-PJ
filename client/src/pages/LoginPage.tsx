@@ -51,10 +51,10 @@ function LoginPage() {
                 />
             </div>
             <form>
-                <input type="text" placeholder="ID" ref={idRef} /> <br />
+                <input type="text" placeholder="아이디" ref={idRef} /> <br />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="비밀번호"
                     ref={passwordRef}
                 />{' '}
                 <br />
@@ -65,7 +65,7 @@ function LoginPage() {
                 />
             </form>
             <p className="signupMessage">
-                Don't have an account? <a href="/signup">Sign up</a>
+                계정이 없으신가요? <a href="/signup">회원가입</a>
             </p>
             {!(
                 errormsg === '' ||

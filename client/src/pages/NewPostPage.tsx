@@ -122,8 +122,8 @@ function NewPostPage() {
                                     setSelectedCategory(e.target.value)
                                 }
                             >
-                                <option value="lang">language</option>
-                                <option value="cul">culture</option>
+                                <option value="lang">언어</option>
+                                <option value="cul">문화</option>
                             </select>
                         </div>
                         <textarea

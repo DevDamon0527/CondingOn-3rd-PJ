@@ -47,7 +47,7 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
                             fontWeight: 'bold',
                         }}
                     >
-                        Create Room
+                        방 만들기
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -56,11 +56,11 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
                             className="mb-3"
                             controlId="exampleForm.ControlInput1"
                         >
-                            <Form.Label>Room Name</Form.Label>
+                            <Form.Label>방 이름</Form.Label>
 
                             <Form.Control
                                 type="text"
-                                placeholder="Enter new room name (max 18 characters)"
+                                placeholder="방 이름을 입력하세요 (최대 18자)"
                                 autoFocus
                                 maxLength={18} // 글자 18자 제한
                                 value={newRoomName}
@@ -71,7 +71,7 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
                             className="mb-3"
                             controlId="exampleForm.ControlTextarea1"
                         >
-                            <Form.Label>Choose Language</Form.Label>
+                            <Form.Label>언어 선택</Form.Label>
                             <Form.Control
                                 as="select"
                                 value={restrictedLang || ''}
@@ -79,12 +79,12 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
                                     setRestrictLang(e.target.value)
                                 }
                             >
-                                <option value="Korean">Korean</option>
-                                <option value="English">English</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
+                                <option value="Korean">한국어</option>
+                                <option value="English">영어</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
                             </Form.Control>
                         </Form.Group>
                     </Form>
@@ -97,14 +97,14 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
                             handleClose();
                         }}
                     >
-                        Close
+                        닫기
                     </Button>
                     <Button
                         style={{ backgroundColor: '#56eebbb3', color: 'black' }}
                         variant="secondary"
                         onClick={handleAddRoom}
                     >
-                        Create
+                        만들기
                     </Button>
                 </Modal.Footer>
             </Modal>

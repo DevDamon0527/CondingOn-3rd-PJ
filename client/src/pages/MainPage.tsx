@@ -171,7 +171,7 @@ const MainPage: React.FC = () => {
 
     return (
         <div>
-            <h1>Chat Room List</h1>
+            <h1>채팅방 목록</h1>
             {chatRooms.map((room) => (
                 <div key={room.id} className="chat-room-item">
                     <Link to={`/chat/${room.id}`} className="room-link">
@@ -181,7 +181,7 @@ const MainPage: React.FC = () => {
             ))}
             <div>
                 {/* DB 이용, personalRooms */}
-                <h1>personal</h1>
+                <h1>개인 채팅</h1>
                 {!(personalRooms === undefined) &&
                     personalRooms.map((elem: any) => {
                         return (
@@ -199,7 +199,7 @@ const MainPage: React.FC = () => {
             </div>
             <div>
                 {/* DB 이용, monoRooms */}
-                <h1>mono</h1>
+                <h1>단체 채팅</h1>
                 {!(monoRooms === undefined) &&
                     monoRooms.map((elem: any) => {
                         return (
@@ -223,13 +223,13 @@ const MainPage: React.FC = () => {
             <div className="create-room-container">
                 <input
                     type="text"
-                    placeholder="Enter new room name"
+                    placeholder="방 이름을 입력하세요"
                     value={newRoomName}
                     onChange={(e) => setNewRoomName(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="to userid"
+                    placeholder="상대방 아이디"
                     value={useridTo}
                     onChange={(e) => setUseridTo(e.target.value)}
                 />
@@ -237,23 +237,23 @@ const MainPage: React.FC = () => {
                     value={restrictedLang || ''}
                     onChange={(e) => setRestrictLang(e.target.value)}
                 >
-                    <option value="">Select Language</option>
-                    <option value="korean">Korea</option>
-                    <option value="english">English</option>
+                    <option value="">언어 선택</option>
+                    <option value="korean">한국어</option>
+                    <option value="english">영어</option>
                 </select>
                 <button onClick={handleAddRoom} className="enter-button">
-                    Create Room
+                    방 만들기
                 </button>
             </div>
             <div className="enter-room-container">
                 <input
                     type="text"
-                    placeholder="Enter room URL"
+                    placeholder="방 URL을 입력하세요"
                     value={enteredRoomUrl}
                     onChange={(e) => setEnteredRoomUrl(e.target.value)}
                 />
                 <button onClick={handleEnterUrl} className="enter-url">
-                    Enter url
+                    입장
                 </button>
             </div>
         </div>

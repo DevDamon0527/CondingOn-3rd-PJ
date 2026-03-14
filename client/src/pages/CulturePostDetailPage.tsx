@@ -27,6 +27,8 @@ function CulturePostDetailPage() {
     const { id } = useParams();
 
     const [culturePost, setCulturePost] = useState<any>([]);
+    const [likeCount, setLikeCount] = useState<number>(0);
+    const [isLiked, setIsLiked] = useState<boolean>(false);
     const { errorHandler } = useErrorHandler();
     const [cookies, setCookies, removeCookies] = useCookies(['id']);
     const idCookie = cookies['id'];
@@ -42,6 +44,8 @@ function CulturePostDetailPage() {
                 withCredentials: true,
             });
             setCulturePost(res.data.posts);
+            setLikeCount(res.data.likeCount);
+            setIsLiked(res.data.didLike);
         } catch (error: any) {
             errorHandler(error.response.status);
             console.log('error', error);
@@ -102,6 +106,9 @@ function CulturePostDetailPage() {
                         nation={culturePost.User?.nation}
                         images={culturePost}
                         gender={culturePost.User?.gender}
+                        likeCount={likeCount}
+                        isLiked={isLiked}
+                        getCulturePosts={getSingleCulturePost}
                     />
                     <div className="culturecomment-container">
                         {comments?.map((comment, index) => {

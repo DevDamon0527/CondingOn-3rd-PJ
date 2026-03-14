@@ -41,7 +41,7 @@ const CorrectingPageHeader = (props: any) => {
                         navigate(-1);
                     }}
                 ></div>
-                <div className="newpost-header-text">Correcting</div>
+                <div className="newpost-header-text">맞춤법 교정</div>
                 <div
                     className="create-correction"
                     onClick={() => {

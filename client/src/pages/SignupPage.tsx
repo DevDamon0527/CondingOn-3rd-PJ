@@ -32,21 +32,21 @@ function SignupPage() {
     const Toggle = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         if (!isUnique) {
-            return setPasswordsNotSameMsg('Please check the ID validity');
+            return setPasswordsNotSameMsg('아이디 중복 확인을 해주세요.');
         }
         if (
             passwordRef.current?.value === undefined ||
             passwordRef.current?.value.length < 6
         ) {
             return setPasswordsNotSameMsg(
-                `Password should be at least 6 characters long.`
+                `비밀번호는 6자 이상이어야 합니다.`
             );
         }
         if (
             !(passwordRef.current?.value === confirmPasswordRef.current?.value)
         ) {
             return setPasswordsNotSameMsg(
-                `There's a difference between password and confirm password`
+                `비밀번호와 비밀번호 확인이 일치하지 않습니다.`
             );
         }
         setPasswordsNotSameMsg('');
@@ -133,7 +133,7 @@ function SignupPage() {
                     />
                     <img src="/images/loginPageLogo.png" alt="logo" />
                 </header>
-                <h1 className="getgreen">User Information</h1>
+                <h1 className="getgreen">회원 정보</h1>
                 <form>
                     <fieldset className={displayToggle ? 'dblock' : 'dnone'}>
                         <input
@@ -142,7 +142,7 @@ function SignupPage() {
                             }
                             type="text"
                             name="id"
-                            placeholder="ID"
+                            placeholder="아이디"
                             ref={idRef}
                         />
                         <br />
@@ -154,14 +154,14 @@ function SignupPage() {
                         <input
                             type="password"
                             name="password"
-                            placeholder="password"
+                            placeholder="비밀번호"
                             ref={passwordRef}
                         />
                         <br />
                         <input
                             type="password"
                             name="confirmpassword"
-                            placeholder="confirmpassword"
+                            placeholder="비밀번호 확인"
                             ref={confirmPasswordRef}
                         />
                         <br />
@@ -177,18 +177,18 @@ function SignupPage() {
                             }}
                         />
                         <p>
-                            Already have an account? <a href="/login">Log In</a>
+                            이미 계정이 있으신가요? <a href="/login">로그인</a>
                         </p>
                     </fieldset>
                     <fieldset className={!displayToggle ? 'dblock' : 'dnone'}>
-                        <label htmlFor="">User Name</label>
+                        <label htmlFor="">닉네임</label>
                         <input
                             type="text"
                             name="name"
-                            placeholder="Type here..."
+                            placeholder="닉네임을 입력하세요"
                             ref={nameRef}
                         />
-                        <label htmlFor="">Gender</label>
+                        <label htmlFor="">성별</label>
                         <div className="radio-btns-flex">
                             <div className="radio-btn-flex">
                                 <input
@@ -205,7 +205,7 @@ function SignupPage() {
                                     htmlFor="male-btn"
                                     className="gender-label"
                                 >
-                                    Male
+                                    남성
                                 </label>
                             </div>
                             <div className="radio-btn-flex">
@@ -222,45 +222,45 @@ function SignupPage() {
                                     htmlFor="female-btn"
                                     className="gender-label"
                                 >
-                                    Female
+                                    여성
                                 </label>
                             </div>
                         </div>
                         <br />
-                        <label htmlFor="">Nation</label>
+                        <label htmlFor="">국적</label>
                         <select name="nation" defaultValue="" ref={nationRef}>
-                            <option value="">Choose here...</option>
-                            <option value="China">China</option>
-                            <option value="America">America</option>
-                            <option value="France">France</option>
-                            <option value="Germany">Germany</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Korea">Korea</option>
+                            <option value="">선택하세요...</option>
+                            <option value="China">중국</option>
+                            <option value="America">미국</option>
+                            <option value="France">프랑스</option>
+                            <option value="Germany">독일</option>
+                            <option value="Japan">일본</option>
+                            <option value="Korea">한국</option>
                         </select>
-                        <label htmlFor="">First Language</label>
+                        <label htmlFor="">모국어</label>
                         <select name="firlang" defaultValue="" ref={firLangRef}>
-                            <option value="">Choose here...</option>
-                            <option value="Chinese">Chinese</option>
-                            <option value="English">English</option>
-                            <option value="French">French</option>
-                            <option value="German">German</option>
-                            <option value="Japanese">Japanese</option>
-                            <option value="Korean">Korean</option>
+                            <option value="">선택하세요...</option>
+                            <option value="Chinese">중국어</option>
+                            <option value="English">영어</option>
+                            <option value="French">프랑스어</option>
+                            <option value="German">독일어</option>
+                            <option value="Japanese">일본어</option>
+                            <option value="Korean">한국어</option>
                         </select>
-                        <label htmlFor="">Learning Language</label>
+                        <label htmlFor="">학습 언어</label>
                         <fieldset className="learning-langs-select">
                             <select
                                 name="learninglang1"
                                 defaultValue=""
                                 ref={learningLang1Ref}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <span
                                 className="plus-and-minus-btn"
@@ -281,13 +281,13 @@ function SignupPage() {
                                 defaultValue=""
                                 ref={learningLang2Ref}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <span className="plus-and-minus-btn">
                                 <img
@@ -316,13 +316,13 @@ function SignupPage() {
                                 defaultValue=""
                                 ref={learningLang3Ref}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <span
                                 className="plus-and-minus-btn"

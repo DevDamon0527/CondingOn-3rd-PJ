@@ -22,7 +22,7 @@ const SendComment: React.FC<SendCommentProps> = ({ onSendComment }) => {
             <div className="send-comment-container">
                 <input
                     type="text"
-                    placeholder="Type something here..."
+                    placeholder="댓글을 입력하세요..."
                     value={comment}
                     className="type-comment"
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>

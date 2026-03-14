@@ -33,7 +33,7 @@ function MonoChatPage() {
                             onClick={() => handleLanguageChange('EN')}
                         >
                             <div className="language-flag englishflag"></div>
-                            <div className="language-text">English</div>
+                            <div className="language-text">영어</div>
                         </div>
 
                         <div
@@ -41,28 +41,28 @@ function MonoChatPage() {
                             onClick={() => handleLanguageChange('JP')}
                         >
                             <div className="language-flag japaneseflag"></div>
-                            <div className="language-text">日本語</div>
+                            <div className="language-text">일본어</div>
                         </div>
                         <div
                             className="change-language"
                             onClick={() => handleLanguageChange('CH')}
                         >
                             <div className="language-flag chineseflag"></div>
-                            <div className="language-text">中國語</div>
+                            <div className="language-text">중국어</div>
                         </div>
                         <div
                             className="change-language"
                             onClick={() => handleLanguageChange('FR')}
                         >
                             <div className="language-flag frenchflag"></div>
-                            <div className="language-text">Français</div>
+                            <div className="language-text">프랑스어</div>
                         </div>
                         <div
                             className="change-language"
                             onClick={() => handleLanguageChange('GM')}
                         >
                             <div className="language-flag germanflag "></div>
-                            <div className="language-text">Deutsch</div>
+                            <div className="language-text">독일어</div>
                         </div>
                     </div>
                     <div className="chatroom-container">

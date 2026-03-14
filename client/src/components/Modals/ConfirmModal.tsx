@@ -18,10 +18,10 @@ function ConfirmModal({ show, setShow, navigate }: any) {
                             fontWeight: 'bold',
                         }}
                     >
-                        Success!
+                        완료!
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>The change has been completed.</Modal.Body>
+                <Modal.Body>변경이 완료되었습니다.</Modal.Body>
                 <Modal.Footer>
                     <Button
                         style={{ backgroundColor: '#dabca8b3', color: 'black' }}
@@ -30,7 +30,7 @@ function ConfirmModal({ show, setShow, navigate }: any) {
                             handleClose();
                         }}
                     >
-                        Close
+                        닫기
                     </Button>
                 </Modal.Footer>
             </Modal>

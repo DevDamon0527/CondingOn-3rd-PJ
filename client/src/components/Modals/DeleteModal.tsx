@@ -33,11 +33,11 @@ function DeleteModal({ show, setShow, navigate }: any) {
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header>
                     <Modal.Title style={{ color: 'red', fontWeight: 'bold' }}>
-                        Warning!
+                        경고!
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ fontWeight: 'bold' }}>
-                    Are you absolutely certain you want to delete your account?
+                    정말로 계정을 삭제하시겠습니까?
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
@@ -45,7 +45,7 @@ function DeleteModal({ show, setShow, navigate }: any) {
                             handleCancle();
                         }}
                     >
-                        Cancel
+                        취소
                     </Button>
                     <Button
                         style={{ backgroundColor: 'red', color: 'black' }}
@@ -54,7 +54,7 @@ function DeleteModal({ show, setShow, navigate }: any) {
                             handleClose();
                         }}
                     >
-                        Confirm
+                        확인
                     </Button>
                 </Modal.Footer>
             </Modal>

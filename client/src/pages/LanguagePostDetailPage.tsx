@@ -27,6 +27,8 @@ function LanguagePostDetailPage() {
     const { id } = useParams();
     const { errorHandler } = useErrorHandler();
     const [languagePost, setLanguagePost] = useState<any>([]);
+    const [likeCount, setLikeCount] = useState<number>(0);
+    const [isLiked, setIsLiked] = useState<boolean>(false);
 
     const [cookies, setCookies, removeCookies] = useCookies(['id']);
     const idCookie = cookies['id'];
@@ -42,6 +44,8 @@ function LanguagePostDetailPage() {
                 withCredentials: true,
             });
             setLanguagePost(res.data.posts);
+            setLikeCount(res.data.likeCount);
+            setIsLiked(res.data.didLike);
         } catch (error: any) {
             errorHandler(error.response.status);
             console.log('error', error);
@@ -107,6 +111,9 @@ function LanguagePostDetailPage() {
                             name={languagePost.User?.name}
                             commentcount={languagePost.commentcount}
                             gender={languagePost.User?.gender}
+                            likeCount={likeCount}
+                            isLiked={isLiked}
+                            getLanguagePosts={getSingleLanguagePost}
                         />
                         <div className="languagecomment-container">
                             {comments?.map((comment, index) => {

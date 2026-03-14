@@ -141,13 +141,13 @@ function SearchUserHeader(props: any) {
                         }`}
                         onClick={() => doFollow()}
                     >
-                        {isFollow ? 'Follow' : 'UnFollow'}
+                        {isFollow ? '팔로우' : '팔로우 취소'}
                     </button>
                     <button
                         className="profile-messageBtn"
                         onClick={handleAddRoom}
                     >
-                        Message
+                        메시지
                     </button>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../styles/Footer.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Footer() {
     const navMessage = '/images/Chats.png';
@@ -15,15 +15,19 @@ function Footer() {
     const navMypageColor = '/images/UserColor.png';
 
     const [hoveredDiv, setHoverdDiv] = useState('');
-    const [clickedDiv, setClickedDiv] = useState('');
+    const location = useLocation();
 
-    // 페이지 로드 시 로컬 스토리지에서 클릭된 상태 가져오기
-    useEffect(() => {
-        const storedClickedDiv = localStorage.getItem('clickedDiv');
-        if (storedClickedDiv) {
-            setClickedDiv(storedClickedDiv);
-        }
-    }, []);
+    const getActiveTab = () => {
+        const path = location.pathname;
+        if (path.startsWith('/message') || path.startsWith('/chat')) return 'footerMessage';
+        if (path.startsWith('/posts') || path.startsWith('/c-postdetail') || path.startsWith('/l-postdetail') || path.startsWith('/newpost')) return 'posts';
+        if (path.startsWith('/monochat')) return 'usersfour';
+        if (path.startsWith('/errorlog')) return 'favorites';
+        if (path.startsWith('/mypage') || path.startsWith('/searchuser')) return 'mypage';
+        return '';
+    };
+
+    const clickedDiv = getActiveTab();
 
     const onMouseOver = (divName: string) => {
         setHoverdDiv(divName);
@@ -31,13 +35,6 @@ function Footer() {
 
     const onMouseLeave = () => {
         setHoverdDiv('');
-    };
-
-    // 클릭 시 변경된 이미지 고정.
-    const clickMouse = (divName: string) => {
-        setClickedDiv(divName);
-        // 클릭된 상태를 로컬 스토리지에 저장
-        localStorage.setItem('clickedDiv', divName);
     };
 
     return (
@@ -50,7 +47,7 @@ function Footer() {
                     } ${clickedDiv === 'footerMessage' && 'text-change'}`}
                     onMouseOver={() => onMouseOver('footerMessage')}
                     onMouseLeave={() => onMouseLeave()}
-                    onClick={() => clickMouse('footerMessage')}
+                    onClick={() => {}}
                 >
                     <img
                         className="footer-div-message-img"
@@ -62,7 +59,7 @@ function Footer() {
                         }
                         alt=""
                     />
-                    <div className="text">Message</div>
+                    <div className="text">메시지</div>
                 </div>
             </Link>
             <Link to={'/posts'}>
@@ -73,7 +70,7 @@ function Footer() {
           ${clickedDiv === 'posts' && 'text-change'}`}
                     onMouseOver={() => onMouseOver('posts')}
                     onMouseLeave={() => onMouseLeave()}
-                    onClick={() => clickMouse('posts')}
+                    onClick={() => {}}
                 >
                     <img
                         src={
@@ -83,7 +80,7 @@ function Footer() {
                         }
                         alt=""
                     />
-                    <div className="text">Posts</div>
+                    <div className="text">게시물</div>
                 </div>
             </Link>
             <Link to={'/monochat'}>
@@ -93,7 +90,7 @@ function Footer() {
                     } ${clickedDiv === 'usersfour' && 'text-change'}`}
                     onMouseOver={() => onMouseOver('usersfour')}
                     onMouseLeave={() => onMouseLeave()}
-                    onClick={() => clickMouse('usersfour')}
+                    onClick={() => {}}
                 >
                     <img
                         src={
@@ -104,7 +101,7 @@ function Footer() {
                         }
                         alt=""
                     />
-                    <div className="text">MonoChat</div>
+                    <div className="text">단체채팅</div>
                 </div>
             </Link>
             <Link to={'/errorlog'}>
@@ -114,7 +111,7 @@ function Footer() {
                     } ${clickedDiv === 'favorites' && 'text-change'}`}
                     onMouseOver={() => onMouseOver('favorites')}
                     onMouseLeave={() => onMouseLeave()}
-                    onClick={() => clickMouse('favorites')}
+                    onClick={() => {}}
                 >
                     <img
                         src={
@@ -125,7 +122,7 @@ function Footer() {
                         }
                         alt=""
                     />
-                    <div className="text">ErrorLog</div>
+                    <div className="text">오류로그</div>
                 </div>
             </Link>
             <Link to={'/mypage'}>
@@ -135,7 +132,7 @@ function Footer() {
                     } ${clickedDiv === 'mypage' && 'text-change'}`}
                     onMouseOver={() => onMouseOver('mypage')}
                     onMouseLeave={() => onMouseLeave()}
-                    onClick={() => clickMouse('mypage')}
+                    onClick={() => {}}
                 >
                     <img
                         src={
@@ -145,7 +142,7 @@ function Footer() {
                         }
                         alt=""
                     />
-                    <div className="text">MyPage</div>
+                    <div className="text">마이페이지</div>
                 </div>
             </Link>
         </footer>

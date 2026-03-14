@@ -95,34 +95,34 @@ function MypageEditLanguage() {
                         <img src="/images/BackPoint.png" alt="" />
                     </div>
                 </Link>
-                <div className="settingBack">Edit Language</div>
+                <div className="settingBack">학습 언어 변경</div>
             </div>
             <div className="myPageOption-container multer2">
                 {/* 내용 */}
                 <div className="editLanguage-Container">
-                    <div className="editContainer-title">Language</div>
+                    <div className="editContainer-title">언어</div>
                     <div className="editContainer-smalltitle">
-                        Please enter the{' '}
+                        변경할{' '}
                         <span style={{ color: 'plum', fontWeight: 'bold' }}>
-                            Language
-                        </span>{' '}
-                        to be modified
+                            학습 언어
+                        </span>
+                        를 선택해주세요
                     </div>
                     <form action="" className="editLanguage-Form">
-                        <label>Learning Language</label>
+                        <label>학습 언어</label>
                         <div className="chooseSelectBoxDiv">
                             <select
                                 name="chooseSelect"
                                 id=""
                                 ref={chooseLangRef}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <div className="chooseSelect-plus-minus-btn">
                                 <img
@@ -146,13 +146,13 @@ function MypageEditLanguage() {
                                 id=""
                                 ref={chooseLangRef2}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <div className="chooseSelect-plus-minus-btn">
                                 <img
@@ -184,13 +184,13 @@ function MypageEditLanguage() {
                                 id=""
                                 ref={chooseLangRef3}
                             >
-                                <option value="">Choose here...</option>
-                                <option value="Chinese">Chinese</option>
-                                <option value="English">English</option>
-                                <option value="French">French</option>
-                                <option value="German">German</option>
-                                <option value="Japanese">Japanese</option>
-                                <option value="Korean">Korean</option>
+                                <option value="">선택하세요...</option>
+                                <option value="Chinese">중국어</option>
+                                <option value="English">영어</option>
+                                <option value="French">프랑스어</option>
+                                <option value="German">독일어</option>
+                                <option value="Japanese">일본어</option>
+                                <option value="Korean">한국어</option>
                             </select>
                             <div className="chooseSelect-plus-minus-btn">
                                 <img
@@ -212,7 +212,7 @@ function MypageEditLanguage() {
                             submitEditLangForm(e)
                         }
                     >
-                        Confirm
+                        확인
                     </button>
                 </div>
             </div>

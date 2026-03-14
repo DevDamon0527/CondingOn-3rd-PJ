@@ -129,7 +129,7 @@ function PostsPage() {
                             <input
                                 className="searchbar-input"
                                 type="text"
-                                placeholder="Type something here..."
+                                placeholder="검색어를 입력하세요..."
                                 value={searchQuery}
                                 onChange={(e) => {
                                     setSearchQuery(e.target.value);
@@ -142,7 +142,7 @@ function PostsPage() {
                                 getSearchResults();
                             }}
                         >
-                            Search
+                            검색
                         </button>
                     </div>
                     <div className="category-component">
@@ -154,7 +154,7 @@ function PostsPage() {
                             }`}
                             onClick={handleLanguageClick}
                         >
-                            Language
+                            언어
                         </div>
                         <br />
                         <div
@@ -168,7 +168,7 @@ function PostsPage() {
                                 getCulturePosts();
                             }}
                         >
-                            Culture
+                            문화
                         </div>
                         <br />
                     </div>
@@ -211,7 +211,7 @@ function PostsPage() {
                                         />
                                     ))
                             ) : (
-                                <p>No language posts found.</p>
+                                <p>언어 게시물이 없습니다.</p>
                             )}
                         </div>
                     )}
@@ -256,7 +256,7 @@ function PostsPage() {
                                         />
                                     ))
                             ) : (
-                                <p>No culture posts found.</p>
+                                <p>문화 게시물이 없습니다.</p>
                             )}
                         </div>
                     )}
@@ -316,7 +316,7 @@ function PostsPage() {
                                                 />
                                             ))
                                     ) : (
-                                        <p>No matching language posts found.</p>
+                                        <p>검색된 언어 게시물이 없습니다.</p>
                                     )}
                                 </div>
                             )}
@@ -375,7 +375,7 @@ function PostsPage() {
                                                 />
                                             ))
                                     ) : (
-                                        <p>No matching culture posts found.</p>
+                                        <p>검색된 문화 게시물이 없습니다.</p>
                                     )}
                                 </div>
                             )}

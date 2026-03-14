@@ -6,9 +6,9 @@ function Search() {
         <>
             <div className='search-container'>
                 <div className='searchbar'>
-                    <input className='searchbar-input' type="text" placeholder='Type something here...' />
+                    <input className='searchbar-input' type="text" placeholder='검색어를 입력하세요...' />
                 </div>
-                <button className="search-button">Search</button>
+                <button className="search-button">검색</button>
             </div>
         </>
     )

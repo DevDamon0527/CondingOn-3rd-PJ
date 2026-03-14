@@ -57,7 +57,7 @@ function MypageProfile(props: any) {
                         className="introduce-textarea"
                         readOnly
                         ref={intro}
-                        placeholder="Write a self-introduction"
+                        placeholder="자기소개를 입력하세요"
                         defaultValue={userData.introduction || ''}
                     ></textarea>
                 </div>
