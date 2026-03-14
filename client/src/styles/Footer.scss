@@ -2,12 +2,16 @@
 
 .footer {
     align-items: center;
-    box-shadow: inset 0px 1px 0px rgba(192, 191, 191, 0.5);
-    width: $all-width;
+    width: 100%;
+    max-width: 40em;
     height: 5em;
     position: fixed;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: white;
+    border-top: 1.5px solid #eeeeee;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;

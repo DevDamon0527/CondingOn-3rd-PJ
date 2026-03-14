@@ -5,8 +5,11 @@
     height: 3em;
     top: 0;
     width: 100%;
+    max-width: 40em;
     padding: 0 1rem;
     position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
     background-color: white;
     border-bottom: 1.5px solid #eeeeee;
