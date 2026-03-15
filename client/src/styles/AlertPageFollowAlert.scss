@@ -1,17 +1,13 @@
-.followalert-container{
-    width: 390px;
-    height: fit-content;
-    padding: 20px 24px;
-    background-color: #E9FFEE;
+@import './Common.scss';
 
-    .followalert-title{
-        width: 390px;
-        height: fit-content;
-        font-size: 14px;
-        color: #000;
-    }
+.followalert-title {
+    width: 100%;
+    height: fit-content;
+    font-family: $font-body;
+    font-size: 14px;
+    color: #000;
 }
 
-.followalert-username{
+.followalert-username {
     font-weight: bold;
 }

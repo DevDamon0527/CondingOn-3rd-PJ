@@ -2,17 +2,23 @@
 
 .alert-header-container {
     width: 100%;
+    max-width: 40em;
+    margin: 0 auto;
     height: 3em;
     display: flex;
     align-items: center;
     background-color: white;
-    box-shadow: inset 0px 0px 5px rgba(192, 191, 191, 0.5);
+    border-bottom: 1.5px solid #eeeeee;
 
     .back-arrow {
         width: 24px;
         height: 24px;
         background-image: url('../img/backarrow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         margin-left: 16px;
+        cursor: pointer;
     }
 
     .alert-header-text {

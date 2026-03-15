@@ -1,25 +1,22 @@
-.postalert-container{
-    width: 390px;
+@import './Common.scss';
+
+.postalert-title {
+    width: 100%;
     height: fit-content;
-    background-color: #E9FFEE;
-    padding: 20px 24px;
-
-    .postalert-title{
-        width: 390px;
-        height: fit-content;
-        font-size: 14px;
-        color: #000;
-    }
-
-    .postalert-content{
-        width: 390px;
-        height: fit-content;
-        font-size: 14px;
-        color: #888;
-    }
+    font-family: $font-body;
+    font-size: 14px;
+    color: #000;
 }
 
+.postalert-content {
+    width: 100%;
+    height: fit-content;
+    font-family: $font-body;
+    font-size: 13px;
+    color: #888;
+    margin-top: 3px;
+}
 
-.postalert-username{
+.postalert-username {
     font-weight: bold;
 }

@@ -1,42 +1,71 @@
-.monotalkalert-container {
-    width: 100%;
-    height: fit-content;
-    padding: 20px 24px;
-    background-color: #e9ffee;
+@import './Common.scss';
 
-    .monotalkalert-title {
-        width: 100%;
-        height: fit-content;
-        font-size: 14px;
-        color: #000;
-    }
-
-    .monotalkalert-content {
-        width: 100%;
-        height: fit-content;
-        font-size: 14px;
-        color: #888;
-    }
-}
-
+.monotalkalert-container,
 .monotalkalert-oldcontainer {
     width: 100%;
     height: fit-content;
-    padding: 20px 24px;
-    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid #eeeeee;
 
     .monotalkalert-title {
         width: 100%;
         height: fit-content;
         font-size: 14px;
         color: #000;
+        font-family: $font-body;
     }
 
     .monotalkalert-content {
         width: 100%;
         height: fit-content;
-        font-size: 14px;
+        font-size: 13px;
         color: #888;
+        margin-top: 3px;
+        font-family: $font-body;
+    }
+}
+
+.monotalkalert-container {
+    background-color: #e9ffee;
+}
+
+.monotalkalert-oldcontainer {
+    background-color: white;
+}
+
+.alert-body {
+    flex: 1;
+    min-width: 0;
+    padding: 16px 20px;
+    cursor: pointer;
+}
+
+.alert-delete-btn {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    border: none;
+    background: transparent;
+    color: #bbb;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.06);
+        color: #666;
+    }
+
+    &:active {
+        background-color: rgba(0, 0, 0, 0.1);
     }
 }
 

@@ -1,9 +1,26 @@
 .alertslist-container {
     width: 100%;
     height: calc(100vh - 8em);
-    overflow: auto;
+    overflow-y: auto;
+    background-color: #f4f6f8;
 
     &::-webkit-scrollbar {
         display: none;
+    }
+}
+
+.alertslist-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    color: #aaa;
+    font-size: 15px;
+    gap: 8px;
+
+    .alertslist-empty-icon {
+        font-size: 36px;
+        margin-bottom: 4px;
     }
 }

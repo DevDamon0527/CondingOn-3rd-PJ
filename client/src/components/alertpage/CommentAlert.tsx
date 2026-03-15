@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../styles/AlertPageCommentAlert.scss';
+import '../../styles/AlertPageMonotalkAlert.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface TimeObject {
@@ -14,7 +15,7 @@ interface TimeObject {
 }
 
 function CommentAlert(props: any) {
-    const { alarmObj, validTime } = props;
+    const { alarmObj, validTime, onDelete } = props;
     const [alarmClassName, setAlarmClassName] = useState(
         'monotalkalert-container'
     );
@@ -57,9 +58,9 @@ function CommentAlert(props: any) {
         }
     }, []);
     return (
-        <>
+        <div className={alarmClassName}>
             <div
-                className={alarmClassName}
+                className="alert-body"
                 onClick={() =>
                     navigate(
                         `/${alarmObj.option2}-postdetail/${alarmObj.option1}`
@@ -74,8 +75,16 @@ function CommentAlert(props: any) {
                 </div>
                 <div className="commentalert-content">{timeObj?.howLong}</div>
             </div>
-            <div className="bottom-line"></div>
-        </>
+            <button
+                className="alert-delete-btn"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onDelete(alarmObj.index);
+                }}
+            >
+                ×
+            </button>
+        </div>
     );
 }
 

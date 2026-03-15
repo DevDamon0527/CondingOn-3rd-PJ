@@ -211,6 +211,24 @@ export async function getAlarmList(
     }
 }
 
+export async function deleteAlarm(
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void | Response> {
+    const alarmIndex = parseInt(req.params.index);
+    const userid = req.session.userid;
+    if (!userid) {
+        return res.status(401).json({ msg: 'Please login first', result: false });
+    }
+    try {
+        await Alarm.destroy({ where: { index: alarmIndex, userid: userid } });
+        return res.json({ msg: 'alarm deleted', result: true });
+    } catch (error) {
+        return res.json({ msg: error, result: false });
+    }
+}
+
 export async function newAlarmNumGet(
     req: Request,
     res: Response,

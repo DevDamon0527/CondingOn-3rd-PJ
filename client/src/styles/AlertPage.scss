@@ -1,8 +1,11 @@
 .alertpage {
     width: 100%;
     max-width: 40em;
-    min-height: calc(100vh - 8em);
-    background-color: #f4f4f4;
+    height: calc(100vh - 8em);
+    background-color: #f4f6f8;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .alertpage-container {
@@ -11,5 +14,5 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }

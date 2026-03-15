@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../styles/AlertPageFollowAlert.scss';
+import '../../styles/AlertPageMonotalkAlert.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface TimeObject {
@@ -14,7 +15,7 @@ interface TimeObject {
 }
 
 function FollowAlert(props: any) {
-    const { alarmObj, validTime } = props;
+    const { alarmObj, validTime, onDelete } = props;
     const [alarmClassName, setAlarmClassName] = useState(
         'monotalkalert-container'
     );
@@ -58,9 +59,9 @@ function FollowAlert(props: any) {
     }, []);
 
     return (
-        <>
+        <div className={alarmClassName}>
             <div
-                className={alarmClassName}
+                className="alert-body"
                 onClick={() => navigate(`/searchUser/${alarmObj.otherUserId}`)}
             >
                 <div className="followalert-title">
@@ -69,10 +70,18 @@ function FollowAlert(props: any) {
                     </span>
                     님이 팔로우를 했습니다
                 </div>
-                <div>{timeObj?.howLong}</div>
+                <div className="monotalkalert-content">{timeObj?.howLong}</div>
             </div>
-            <div className="bottom-line"></div>
-        </>
+            <button
+                className="alert-delete-btn"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    onDelete(alarmObj.index);
+                }}
+            >
+                ×
+            </button>
+        </div>
     );
 }
 
