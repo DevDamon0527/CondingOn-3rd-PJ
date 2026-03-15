@@ -1,36 +1,30 @@
-const multer = require('multer');
-const path = require('path');
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
-export const getPostMulterConfig = () => {
-    return {
-        storage: multer.diskStorage({
-            destination(req: any, file: any, done: any) {
-                done(null, 'public/posts/');
-            },
-            filename(req: any, file: any, done: any) {
-                const ext = path.extname(file.originalname);
-                done(null, (req.session.userid || 'userid') + Date.now() + ext);
-            },
-        }),
-        limits: {
-            fileSize: 20 * 1024 * 1024,
-        },
-    };
-};
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+    api_key: process.env.CLOUDINARY_API_KEY!,
+    api_secret: process.env.CLOUDINARY_API_SECRET!,
+});
 
-export const getMyPageMulterConfig = () => {
-    return {
-        storage: multer.diskStorage({
-            destination(req: any, file: any, done: any) {
-                done(null, 'public/mypage/');
-            },
-            filename(req: any, file: any, done: any) {
-                const ext = path.extname(file.originalname);
-                done(null, (req.session.userid || 'userid') + Date.now() + ext);
-            },
-        }),
-        limits: {
-            fileSize: 20 * 1024 * 1024,
-        },
-    };
-};
+export const getPostMulterConfig = () => ({
+    storage: new CloudinaryStorage({
+        cloudinary,
+        params: {
+            folder: 'naiclover/posts',
+            allowed_formats: ['jpg', 'jpeg', 'png'],
+        } as any,
+    }),
+    limits: { fileSize: 20 * 1024 * 1024 },
+});
+
+export const getMyPageMulterConfig = () => ({
+    storage: new CloudinaryStorage({
+        cloudinary,
+        params: {
+            folder: 'naiclover/mypage',
+            allowed_formats: ['jpg', 'jpeg', 'png'],
+        } as any,
+    }),
+    limits: { fileSize: 20 * 1024 * 1024 },
+});

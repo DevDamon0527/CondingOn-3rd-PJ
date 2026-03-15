@@ -17,7 +17,7 @@ export const PostImageModel = (sequelize: any, DataTypes: any) => {
                 allowNull: false,
             },
             path: {
-                type: DataTypes.STRING(100),
+                type: DataTypes.STRING(500),
                 allowNull: false,
             },
         },

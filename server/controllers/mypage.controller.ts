@@ -386,7 +386,7 @@ export const multerMypage = async (
     try {
         await User.update(
             {
-                profileImgPath: `/${req.file?.path}`,
+                profileImgPath: req.file?.path,
             },
             { where: { userid: req.session.userid } }
         );
@@ -394,7 +394,7 @@ export const multerMypage = async (
         return next(err);
     }
 
-    res.json({ path: `/${req.file?.path}` });
+    res.json({ path: req.file?.path });
 };
 
 export const getRevisedLists = async (

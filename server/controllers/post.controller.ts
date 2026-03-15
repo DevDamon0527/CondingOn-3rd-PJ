@@ -134,11 +134,10 @@ export const createPost = async (
         const files = req.files as Express.Multer.File[];
         if (files && files.length > 0) {
             for (let i = 0; i < files.length; i++) {
-                const path = files[i].path;
                 await postImages.create({
                     postId: newPost.postId,
                     userid: req.session.userid,
-                    path: `/${path}`,
+                    path: files[i].path, // Cloudinary URL 그대로 저장
                 });
             }
         }

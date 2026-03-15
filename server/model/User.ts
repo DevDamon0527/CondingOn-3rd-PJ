@@ -23,9 +23,10 @@ export const UserModel = (sequelize: any, DataTypes: any) => {
                 allowNull: false,
             },
             profileImgPath: {
-                type: DataTypes.STRING(100),
+                type: DataTypes.STRING(500),
                 allowNull: true,
-                defaultValue: '/public/mypage/default.png',
+                defaultValue:
+                    'https://res.cloudinary.com/dqyw6tfk9/image/upload/v1773610405/default_a3snec.png',
             },
             introduction: {
                 type: DataTypes.STRING(2000),
