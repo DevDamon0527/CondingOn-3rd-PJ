@@ -17,10 +17,9 @@ export async function createMonoRoomDb(
     restrictedLang: string,
     roomNumArr: Array<String>
 ) {
-    let result;
     const genaratedUniqueId = generateUniqueId();
     try {
-        result = await Room.create({
+        const result = await Room.create({
             roomNum: genaratedUniqueId,
             roomName: roomName,
             userid: userid,
@@ -32,10 +31,11 @@ export async function createMonoRoomDb(
             roomNum: genaratedUniqueId,
             numberOfPeople: 0,
         });
+
+        roomNumArr.push(result.roomNum);
     } catch (err) {
         console.log(err);
     }
-    roomNumArr.push(result.roomNum);
 }
 
 export function updatePeopleInMonoRoom(roomClients: number, room: string) {
@@ -86,10 +86,11 @@ export async function createPersonalRoomDb(
             useridTo: useridTo,
             restrictedLang: null,
         });
+
+        roomNumArr.push(result.dataValues.roomNum);
     } catch (err) {
         console.log(err);
     }
-    roomNumArr.push(result.dataValues.roomNum);
 
     return;
 }

@@ -30,6 +30,7 @@ function PersonalChatList() {
         <>
             {!(personalRooms === undefined) &&
                 personalRooms.map((elem: any) => {
+                    if (!elem.realRoomName?.[0]) return null;
                     return (
                         <div key={elem.roomNum}>
                             <Link to={`/chat/${elem.roomNum}`}>

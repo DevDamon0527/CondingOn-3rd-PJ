@@ -3,6 +3,7 @@
 
 .editLanguage-Container {
     @extend .editPassword-Container;
+    overflow: auto;
 
     .editLanguage-Form {
         @extend .editPassword-Form;

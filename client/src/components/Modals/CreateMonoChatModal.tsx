@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import '../../styles/CreateMonoChatModal.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { io } from 'socket.io-client';
 
@@ -31,11 +31,16 @@ function CreateMonoChatModal({ show, setShow, navigate }: any) {
         }
     };
 
-    const handleRoomCreated = ({ roomNum }: { roomNum: string }) => {
-        // 방이 생성되면 해당 방으로 이동
-        window.location.href = `/chat/${roomNum}`;
-    };
-    socket.on('roomCreated', handleRoomCreated);
+    useEffect(() => {
+        const handleRoomCreated = ({ roomNum }: { roomNum: string }) => {
+            window.location.href = `/chat/${roomNum}`;
+        };
+        socket.on('roomCreated', handleRoomCreated);
+        return () => {
+            socket.off('roomCreated', handleRoomCreated);
+        };
+    }, []);
+
     return (
         <>
             {/* 변경 완료 되었을 시에 모달! */}

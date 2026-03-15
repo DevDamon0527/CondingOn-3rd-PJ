@@ -71,10 +71,12 @@ export const getPersonalRooms = async (
             result.dataValues.realRoomName = final;
         }
         sortedResults = results.sort(function (a: any, b: any) {
-            return (
-                b.dataValues.Chats[b.Chats.length - 1].createdAt -
-                a.dataValues.Chats[a.Chats.length - 1].createdAt
-            );
+            const aChat = a.dataValues.Chats?.[a.dataValues.Chats.length - 1];
+            const bChat = b.dataValues.Chats?.[b.dataValues.Chats.length - 1];
+            if (!bChat && !aChat) return 0;
+            if (!bChat) return 1;
+            if (!aChat) return -1;
+            return new Date(bChat.createdAt).getTime() - new Date(aChat.createdAt).getTime();
         });
     } catch (err) {
         return next(err);

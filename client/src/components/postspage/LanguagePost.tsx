@@ -173,7 +173,7 @@ function LanguagePost(props: any) {
                     <div className="lang-time">
                         {getTimeObj(props.createdAt).year}년{' '}
                         {getTimeObj(props.createdAt).month}월{' '}
-                        {getTimeObj(props.createdAt).day}일{' '}
+                        {getTimeObj(props.createdAt).date}일{' '}
                         {getTimeObj(props.createdAt).hour}시{' '}
                         {getTimeObj(props.createdAt).minute}분
                     </div>

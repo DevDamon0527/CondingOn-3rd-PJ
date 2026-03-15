@@ -278,3 +278,10 @@ db.sequelize
     .catch((err: Error) => {
         console.log(err);
     });
+
+// nodemon 재시작 시 포트를 정상 반납하고 종료
+process.on('SIGTERM', () => {
+    server.close(() => {
+        process.exit(0);
+    });
+});
