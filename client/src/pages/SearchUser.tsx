@@ -10,7 +10,6 @@ import axios from 'axios';
 import { Post, User } from '../types/types';
 import { useNavigate, useParams } from 'react-router-dom';
 import useErrorHandler from '../utils/useErrorHandler';
-import { Link } from 'react-router-dom';
 import CulturePost from '../components/postspage/CulturePost';
 import LanguagePost from '../components/postspage/LanguagePost';
 
@@ -150,11 +149,6 @@ function SearchUser() {
                     />
                 ) : (
                     <div className="userpagePostItems-C">
-                        <div className="addPostImg">
-                            <Link to={'/newpost'}>
-                                <img src="/images/addpost.png" alt="" />
-                            </Link>
-                        </div>
                         <div className="mypage-post-container">
                             {sortedPostData !== undefined &&
                                 sortedPostData.map((post: any) => {
