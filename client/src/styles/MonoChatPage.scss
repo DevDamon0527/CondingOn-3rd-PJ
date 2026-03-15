@@ -45,9 +45,8 @@
             flex-shrink: 0;
             width: 20px;
             height: 16px;
-            background-color: lightgrey;
             border: 1px solid lightgrey;
-            background-position: center;
+            object-fit: cover;
         }
 
         .language-text {
@@ -147,34 +146,6 @@
     flex-flow: wrap;
 }
 
-.koreanflag {
-    background-image: url('../../public/images/flag/Korea.png');
-    background-size: cover;
-}
-
-.englishflag {
-    background-image: url('../../public/images/flag/America.png');
-    background-size: cover;
-}
-
-.japaneseflag {
-    background-image: url('../../public/images/flag/Japan.png');
-    background-size: cover;
-}
-
-.chineseflag {
-    background-image: url('../../public/images/flag/China.png');
-}
-
-.frenchflag {
-    background-image: url('../../public/images/flag/France.png');
-    background-size: cover;
-}
-
-.germanflag {
-    background-image: url('../../public/images/flag/Germany.png');
-    background-size: cover;
-}
 
 .selected-language {
     border: 2px solid black;

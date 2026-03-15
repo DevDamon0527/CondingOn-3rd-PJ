@@ -87,7 +87,9 @@
 
         .imageC {
             position: relative;
-            @include flex();
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
 
             .profile-image {
                 > img {
@@ -97,7 +99,6 @@
             .flag-image {
                 > img {
                     @include flag-image();
-                    transform: translate(-58px, -2px);
                 }
             }
         }

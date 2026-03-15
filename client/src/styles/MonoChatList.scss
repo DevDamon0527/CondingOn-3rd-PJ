@@ -60,11 +60,11 @@
                     > img {
                         width: 16px;
                         height: 12px;
-                        background-color: lightgrey;
                         border: 1px solid lightgrey !important;
                         position: absolute;
                         right: 0px;
                         bottom: 0px;
+                        object-fit: cover;
                     }
                 }
             }

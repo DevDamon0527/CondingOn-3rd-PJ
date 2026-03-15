@@ -45,9 +45,10 @@ $--green--500: rgb(0, 48, 0);
     width: 22px;
     height: 16px;
     position: absolute;
-    background-color: white;
     border: 1px solid lightgrey !important;
-    bottom: -2px;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
 }
 
 @mixin edit-ConfirmBtn() {

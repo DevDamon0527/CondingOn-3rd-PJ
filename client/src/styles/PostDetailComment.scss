@@ -27,11 +27,11 @@
 .comment-flag-pic {
     width: 16px;
     height: 12px;
-    background-color: white;
     border: 1px solid lightgrey;
     position: absolute;
     bottom: 0px;
     right: 0px;
+    object-fit: cover;
 }
 
 .comment-inside-container {

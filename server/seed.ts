@@ -53,7 +53,7 @@ async function main() {
             password: hashedPw,
             name: '김유나',
             gender: 'F',
-            nation: 'Korean',
+            nation: 'Korea',
             firLang: 'Korean',
             profileImgPath: '/public/mypage/default.png',
             introduction:
@@ -66,7 +66,7 @@ async function main() {
             password: hashedPw,
             name: 'James Park',
             gender: 'M',
-            nation: 'American',
+            nation: 'America',
             firLang: 'English',
             profileImgPath: '/public/mypage/default.png',
             introduction:
@@ -79,7 +79,7 @@ async function main() {
             password: hashedPw,
             name: '리메이',
             gender: 'F',
-            nation: 'Chinese',
+            nation: 'China',
             firLang: 'Chinese',
             profileImgPath: '/public/mypage/default.png',
             introduction:

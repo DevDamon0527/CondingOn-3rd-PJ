@@ -26,6 +26,9 @@
 
             .imageC {
                 position: relative;
+                width: 56px;
+                height: 56px;
+                flex-shrink: 0;
 
                 .profile-image {
                     > img {
