@@ -13,7 +13,7 @@ export async function login(
     const { userid, password } = req.body;
     if (!userid || userid.trim().length === 0) {
         return res.json({
-            msg: 'Please input ID.',
+            msg: '아이디를 입력해주세요.',
             isLoggedin: false,
             userid: null,
         });
@@ -21,7 +21,7 @@ export async function login(
 
     if (!password || password.trim().length === 0) {
         return res.json({
-            msg: 'Please input Password.',
+            msg: '비밀번호를 입력해주세요.',
             isLoggedin: false,
             userid: null,
         });
@@ -31,14 +31,14 @@ export async function login(
         existingUser = await User.findOne({ where: { userid: userid } });
     } catch (err) {
         return res.status(500).json({
-            msg: 'An Error Occurred ',
+            msg: '오류가 발생했습니다.',
             isLoggedin: false,
             userid: null,
         });
     }
     if (!existingUser) {
         return res.json({
-            msg: 'No account finded! Check ID and Password input.',
+            msg: '아이디 또는 비밀번호가 올바르지 않습니다.',
             isLoggedin: false,
             userid: null,
         });
@@ -46,7 +46,7 @@ export async function login(
 
     if (!bcrypt.compareSync(password, existingUser.password)) {
         return res.json({
-            msg: 'No account finded! Check ID and Password input.',
+            msg: '아이디 또는 비밀번호가 올바르지 않습니다.',
             isLoggedin: false,
             userid: null,
         });
@@ -85,62 +85,62 @@ export async function signup(
 
     if (!isUnique || JSON.parse(isUnique) == false || existingUser) {
         return res.json({
-            msg: 'Please Execute ID Valid check',
+            msg: '아이디 중복 확인을 해주세요.',
             isError: true,
         });
     }
 
     if (!userid || userid.trim().length <= 3) {
         return res.json({
-            msg: 'ID should be at least 4 characters long.',
+            msg: '아이디는 4자 이상이어야 합니다.',
             isError: true,
         });
     }
 
     if (!password || password.trim().length <= 5) {
         return res.json({
-            msg: 'Password should be at least 4 characters long.',
+            msg: '비밀번호는 6자 이상이어야 합니다.',
             isError: true,
         });
     }
 
     if (!(password === confirmPassword)) {
         return res.json({
-            msg: `There's a difference between password and confirm password`,
+            msg: '비밀번호와 비밀번호 확인이 일치하지 않습니다.',
             isError: true,
         });
     }
 
     if (!name || name.trim().length < 2) {
         return res.json({
-            msg: 'Name should be at least 2 characters long',
+            msg: '닉네임은 2자 이상이어야 합니다.',
             isError: true,
         });
     }
 
     if (!(gender === 'm' || gender === 'f')) {
         return res.json({
-            msg: 'Please Select your Gender.',
+            msg: '성별을 선택해주세요.',
             isError: true,
         });
     }
     if (!nation || nation.trim().length < 2) {
         return res.json({
-            msg: 'Please Select your nation.',
+            msg: '국적을 선택해주세요.',
             isError: true,
         });
     }
 
     if (!firLang || firLang.trim().length < 2) {
         return res.json({
-            msg: 'Please Select your first Language.',
+            msg: '모국어를 선택해주세요.',
             isError: true,
         });
     }
 
     if (!learningLang || learningLang.length < 1) {
         return res.json({
-            msg: 'Plase Select some Languages at least 1',
+            msg: '학습 언어를 1개 이상 선택해주세요.',
             isError: true,
         });
     }
@@ -176,7 +176,7 @@ export async function existAlready(
     const { userid } = req.body;
     if (userid.trim().length < 4) {
         return res.json({
-            msg: 'ID should be at least 4 characters long.',
+            msg: '아이디는 4자 이상이어야 합니다.',
             isUnique: false,
         });
     }
@@ -189,8 +189,8 @@ export async function existAlready(
         return next(err);
     }
     if (existingUser) {
-        res.json({ msg: 'ID already exists.', isUnique: false });
+        res.json({ msg: '이미 사용 중인 아이디입니다.', isUnique: false });
     } else {
-        res.json({ msg: 'ID can be generated.', isUnique: true });
+        res.json({ msg: '사용 가능한 아이디입니다.', isUnique: true });
     }
 }

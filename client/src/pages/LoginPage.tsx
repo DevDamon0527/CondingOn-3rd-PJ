@@ -42,36 +42,50 @@ function LoginPage() {
     };
 
     return (
-        <div className="logincontainer signup-or-login">
-            <div className="loginlogoImg-div">
-                <img
-                    className="loginlogo"
-                    src="/images/loginPageLogo.png"
-                    alt="logo-img"
-                />
+        <div className="auth-page">
+            <div className="auth-card">
+                <div className="auth-logo">
+                    <img
+                        className="loginlogo"
+                        src="/images/loginPageLogo.png"
+                        alt="logo-img"
+                    />
+                </div>
+                <form className="auth-form">
+                    <div className="auth-field">
+                        <label className="auth-label">아이디</label>
+                        <input
+                            className="auth-input"
+                            type="text"
+                            placeholder="아이디를 입력하세요"
+                            ref={idRef}
+                        />
+                    </div>
+                    <div className="auth-field">
+                        <label className="auth-label">비밀번호</label>
+                        <input
+                            className="auth-input"
+                            type="password"
+                            placeholder="비밀번호를 입력하세요"
+                            ref={passwordRef}
+                        />
+                    </div>
+                    {!(
+                        errormsg === '' ||
+                        errormsg === undefined ||
+                        errormsg === null
+                    ) && <p className="auth-error">{errormsg}</p>}
+                    <button
+                        className="auth-btn"
+                        onClick={(e: React.MouseEvent<HTMLElement>) => login(e)}
+                    >
+                        로그인
+                    </button>
+                </form>
+                <p className="auth-link-text">
+                    계정이 없으신가요? <a href="/signup">회원가입</a>
+                </p>
             </div>
-            <form>
-                <input type="text" placeholder="아이디" ref={idRef} /> <br />
-                <input
-                    type="password"
-                    placeholder="비밀번호"
-                    ref={passwordRef}
-                />{' '}
-                <br />
-                <img
-                    src="/images/signinBtn.png"
-                    alt="login-btn"
-                    onClick={(e: React.MouseEvent<HTMLElement>) => login(e)}
-                />
-            </form>
-            <p className="signupMessage">
-                계정이 없으신가요? <a href="/signup">회원가입</a>
-            </p>
-            {!(
-                errormsg === '' ||
-                errormsg === undefined ||
-                errormsg === null
-            ) && <p className="getred">{errormsg}</p>}
         </div>
     );
 }
