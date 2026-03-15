@@ -205,8 +205,8 @@ function LanguagePost(props: any) {
                             </div>
                         </div>
                     ) : (
-                        <div
-                            className="correction"
+                        <button
+                            className="correction-btn"
                             onClick={() => {
                                 setCookies(
                                     'content',
@@ -217,7 +217,9 @@ function LanguagePost(props: any) {
                                     `/l-postdetail/${props.id}/correcting`
                                 );
                             }}
-                        ></div>
+                        >
+                            첨삭
+                        </button>
                     )}
                 </div>
 
@@ -232,13 +234,11 @@ function LanguagePost(props: any) {
                 <div className="lang-reaction-container">
                     <div className="lang-likes-container">
                         <div
-                            className={`lang-likes' ${
-                                didLike ? 'liked' : 'unliked'
-                            }`}
+                            className={`lang-likes ${didLike ? 'liked' : ''}`}
                             onClick={() => {
                                 langToggleLike();
                             }}
-                        ></div>
+                        >♥</div>
                         <div className="lang-likes-count">{likeCountState}</div>
                     </div>
 

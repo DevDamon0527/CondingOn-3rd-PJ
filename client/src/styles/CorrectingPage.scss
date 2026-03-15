@@ -1,13 +1,29 @@
 @import './Common.scss';
+
 .correctingpage-container {
     width: 100%;
     max-width: 40em;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: #f4f4f4;
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+
+    .correctingpage {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
     .sentences-container {
-        height: fit-content;
+        flex: 1;
+        overflow-y: auto;
+        padding: 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

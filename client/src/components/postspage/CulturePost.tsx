@@ -217,8 +217,8 @@ function CulturePost(props: any) {
                             </div>
                         </div>
                     ) : (
-                        <div
-                            className="correction"
+                        <button
+                            className="correction-btn"
                             onClick={() => {
                                 setCookies(
                                     'content',
@@ -229,7 +229,9 @@ function CulturePost(props: any) {
                                     `/c-postdetail/${props.id}/correcting`
                                 );
                             }}
-                        ></div>
+                        >
+                            첨삭
+                        </button>
                     )}
                 </div>
 
@@ -269,11 +271,9 @@ function CulturePost(props: any) {
                 <div className="cul-reaction-container">
                     <div className="cul-likes-container">
                         <div
-                            className={`cul-likes' ${
-                                didLike ? 'liked' : 'unliked'
-                            }`}
+                            className={`cul-likes ${didLike ? 'liked' : ''}`}
                             onClick={culToggleLike}
-                        ></div>
+                        >♥</div>
                         <div className="cul-likes-count">{likeCountState}</div>
                     </div>
                     <div

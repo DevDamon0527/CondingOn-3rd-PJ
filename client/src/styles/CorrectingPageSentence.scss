@@ -1,25 +1,39 @@
+@import './Common.scss';
+
+/* ── 개별 문장 카드 ── */
 .sentence-container {
     width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     background-color: white;
-    border-bottom: 1px solid #d7d7d7;
+    border-bottom: 1px solid #eeeeee;
+    transition: box-shadow 0.15s ease;
 }
 
+/* ── 원문 문장 행 ── */
 .sentence-header {
     width: 100%;
-    min-height: 4em;
+    min-height: 56px;
     display: flex;
     align-items: center;
-    box-shadow: inset 0px 0px 5px rgba(192, 191, 191, 0.5);
+    padding: 12px 0 12px 20px;
+    box-sizing: border-box;
+    gap: 8px;
 
+    /* 원문 텍스트 */
     .sentence-content {
-        width: 100%;
-        max-height: 4em;
-        font-size: 16px;
-        margin-left: 24px;
+        flex: 1;
+        min-width: 0;
+        font-family: $font-body;
+        font-size: 15px;
+        line-height: 1.55;
+        color: #1a1a1a;
+        overflow-wrap: break-word;
+        word-break: break-all;
     }
+
+    /* 펜(교정 시작) 아이콘 */
     .correcting {
         width: 28px;
         height: 28px;
@@ -27,8 +41,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        margin-left: auto;
-        margin-right: 1em;
+        margin-right: 16px;
         cursor: pointer;
         border-radius: 6px;
         padding: 2px;
@@ -45,44 +58,110 @@
             transform: scale(0.93);
         }
     }
-    .corrctingadd {
-        min-width: 44px;
-        min-height: 26px;
-        margin-right: 1em;
-        margin-left: auto;
+
+    /* 첨삭 + 취소 버튼 묶음 */
+    .correction-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-right: 16px;
         flex-shrink: 0;
+    }
+
+    /* 첨삭 확인 버튼 */
+    .corrctingadd {
+        font-family: $font-body;
+        font-size: 12px;
+        font-weight: 600;
         color: white;
-        background-color: #37af6a;
+        background-color: $primary-color;
         border: none;
         border-radius: 14px;
-        padding: 3px 10px;
-        font-size: 13px;
+        padding: 5px 12px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        white-space: nowrap;
         transition: background-color 0.15s ease, transform 0.1s ease;
 
         &:hover {
-            background-color: #2e9d5e;
+            background-color: darken(#37af6a, 8%);
         }
 
         &:active {
             transform: scale(0.95);
-            background-color: #268c53;
+        }
+    }
+
+    /* 취소 버튼 */
+    .cancel-btn {
+        font-family: $font-body;
+        font-size: 12px;
+        font-weight: 600;
+        color: #888;
+        background: white;
+        border: 1.5px solid #d4d4d4;
+        border-radius: 14px;
+        padding: 5px 12px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background-color 0.15s ease, color 0.15s ease,
+            border-color 0.15s ease;
+
+        &:hover {
+            background-color: #f5f5f5;
+            color: #444;
+            border-color: #aaa;
+        }
+
+        &:active {
+            transform: scale(0.96);
         }
     }
 }
 
-.inputcorrecting {
-    width: 100%;
-    height: 4em;
-    font-size: 16px;
-    border: none;
-    background-color: #f7f7f7;
-    padding-left: 24px;
+/* ── 입력 영역 래퍼 ── */
+.input-wrapper {
+    border-top: 1.5px solid rgba(55, 175, 106, 0.25);
+    background-color: #f9fafb;
 }
 
-.inputcorrecting:focus {
-    outline: none;
+/* ── 교정 입력 필드 ── */
+.inputcorrecting {
+    width: 100%;
+    height: 52px;
+    font-family: $font-body;
+    font-size: 15px;
+    border: none;
+    background-color: transparent;
+    padding: 0 20px;
+    box-sizing: border-box;
+    color: #1a1a1a;
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: #b0b0b0;
+    }
+}
+
+/* ── 교정 결과 영역 (afterDiv) ── */
+.sentence-result {
+    min-height: 0;
+    padding: 10px 20px 12px;
+    font-family: $font-body;
+    font-size: 15px;
+    line-height: 1.55;
+    background-color: #f8fdf9;
+    border-top: 1px solid #e8f5ec;
+    color: #1a1a1a;
+
+    /* 결과가 비어있을 때는 공간 차지 안 함 */
+    &:empty {
+        padding: 0;
+        border-top: none;
+    }
 }

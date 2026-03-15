@@ -37,29 +37,40 @@
     align-items: center;
 }
 
+$posts-tab-color: #7c3aed;
+
 .category-component {
-    @include flex-center();
+    display: flex;
     width: 100%;
+
     .btn_lang {
         @include flex-center();
         width: 50%;
         height: 2em;
-        color: #808080;
+        font-family: $font-title;
+        font-size: 15px;
+        color: $sub-color;
         border-radius: 0;
         margin: 0;
         padding: 0;
-        margin-bottom: 0.5em;
-        border-bottom: 1px solid #808080;
+        border-bottom: 1px solid lightgray;
         cursor: pointer;
         background-color: white;
+        transition: color 0.15s ease;
+        user-select: none;
+
+        &:hover:not(.category-component-changed) {
+            color: lighten($posts-tab-color, 20%);
+        }
     }
     .btn_culture {
         @extend .btn_lang;
     }
     .category-component-changed {
-        font-weight: bolder;
-        font-size: large;
-        border-bottom: 3px solid black;
-        color: black;
+        font-family: $font-title;
+        font-size: 16px;
+        font-weight: bold;
+        color: $posts-tab-color;
+        border-bottom: 3px solid $posts-tab-color;
     }
 }

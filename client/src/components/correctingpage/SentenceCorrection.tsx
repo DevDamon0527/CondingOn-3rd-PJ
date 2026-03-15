@@ -9,8 +9,18 @@ function SentenceCorrection(props: any) {
     const afterDiv = useRef<any>();
     const after = useRef<any>();
     const before = useRef<any>();
+
     const handleCorrectingClick = () => {
         setShowInput(true);
+    };
+
+    const handleCancel = () => {
+        if (before.current) before.current.innerText = line;
+        const newTempLines = [...tempLines];
+        newTempLines[index] = line;
+        setTempLines(newTempLines);
+        setShowInput(false);
+        setIsFixed(false);
     };
 
     const correctExec = (str1: string, str2: string): string[] => {
@@ -21,9 +31,11 @@ function SentenceCorrection(props: any) {
         res.push(afterLine);
         return res;
     };
+
     const correctLines = () => {
         const res = correctExec(content[index], after.current.value);
         setShowInput(false);
+        setIsFixed(false);
         setTimeout(() => {
             afterDiv.current.innerHTML = res[1].replace(
                 /\{([^}]+)\}/g,
@@ -41,7 +53,6 @@ function SentenceCorrection(props: any) {
                 '<span style = "color: red;text-decoration: line-through">$1</span>'
             );
         }, 0);
-        return;
     };
 
     return (
@@ -52,14 +63,25 @@ function SentenceCorrection(props: any) {
                     <div ref={before} className="sentence-content">
                         {props.line}
                     </div>
-                    {showInput && isFixed ? (
-                        <div
-                            className="corrctingadd"
-                            onClick={() => {
-                                correctLines();
-                            }}
-                        >
-                            첨삭
+
+                    {/* 액션 버튼 영역 */}
+                    {showInput ? (
+                        <div className="correction-actions">
+                            {isFixed && (
+                                <div
+                                    className="corrctingadd"
+                                    onClick={correctLines}
+                                >
+                                    첨삭
+                                </div>
+                            )}
+                            <button
+                                className="cancel-btn"
+                                onMouseDown={(e) => e.preventDefault()}
+                                onClick={handleCancel}
+                            >
+                                취소
+                            </button>
                         </div>
                     ) : (
                         <div
@@ -68,12 +90,14 @@ function SentenceCorrection(props: any) {
                         ></div>
                     )}
                 </div>
+
                 {showInput || (
-                    // 에프터 div
-                    <div ref={afterDiv} className="sentence-content"></div>
+                    // 에프터 div (교정 결과)
+                    <div ref={afterDiv} className="sentence-result"></div>
                 )}
+
                 {showInput && (
-                    <div>
+                    <div className="input-wrapper">
                         {/* 에프터 인풋 */}
                         <input
                             type="text"
@@ -82,23 +106,15 @@ function SentenceCorrection(props: any) {
                             ref={after}
                             autoFocus
                             onChange={() => {
-                                if (after.current?.value != props.line) {
+                                if (after.current?.value !== props.line) {
                                     setIsFixed(true);
                                 } else {
                                     setIsFixed(false);
                                 }
                             }}
-                            onBlur={() => {
-                                if (props.line === after.current?.value) {
-                                    tempLines[index] = line;
-                                    setTempLines(tempLines);
-                                    before.current.innerText = line;
-                                    setShowInput(false);
-                                } else {
-                                    setShowInput(true);
-                                }
-                            }}
-                            //만약 이미 한번 수정했는데 다시 수정하려고 한다면 input창에 before랑 after 포함한 html변환된 값이 들어와있음. 이때 다시 조정해주는 함수.
+                            // 만약 이미 한번 수정했는데 다시 수정하려고 한다면
+                            // input창에 before랑 after 포함한 html변환된 값이 들어와있음.
+                            // 이때 다시 조정해주는 함수.
                             onFocus={() => {
                                 setTimeout(() => {
                                     if (after.current?.value.includes('/./')) {

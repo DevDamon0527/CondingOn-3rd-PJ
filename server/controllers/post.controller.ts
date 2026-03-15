@@ -99,15 +99,10 @@ export const getPosts = async (
             return next(err);
         }
     }
-    let sortedPostDatas = PostsDatas.sort(function (a: any, b: any) {
-        const aDate = a[0].dataValues.createdAt;
-        const bDate = b[0].dataValues.createdAt;
+    const sortedPostDatas = PostsDatas.sort(function (a: any, b: any) {
+        const aDate = new Date(a[0].dataValues.createdAt).getTime();
+        const bDate = new Date(b[0].dataValues.createdAt).getTime();
         return bDate - aDate;
-    });
-    sortedPostDatas = PostsDatas.sort(function (a: any, b: any) {
-        const aIsFollowing = a[4];
-        const bIsFollowing = b[4];
-        return bIsFollowing - aIsFollowing;
     });
 
     // map으로 render 가능하게 PostDatas[0][0] = allPosts, PostDatas[0][1] = likeCount, PostDatas[0][2] = myLikeData(boolean)
