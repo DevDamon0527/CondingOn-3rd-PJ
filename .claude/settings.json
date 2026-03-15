@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"c:\\\\Users\\\\jae hyeon\\\\Desktop\\\\Dev\\\\CondingOn-3rd-PJ\\\\server\"\" 2>/dev/null || ls -la \"/c/Users/jae hyeon/Desktop/Dev/CondingOn-3rd-PJ/server/ \")"
+    ]
+  }
+}
