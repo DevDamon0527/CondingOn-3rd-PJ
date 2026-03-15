@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import useErrorHandler from '../utils/useErrorHandler';
+import { getImageUrl } from '../utils/getImageUrl';
 
 const socket = io(`${process.env.REACT_APP_SERVERURL}`);
 
@@ -190,7 +191,7 @@ const MainPage: React.FC = () => {
                                     <li>{elem.realRoomName[0].name}</li>
                                     <li>{elem.realRoomName[0].nation}</li>
                                     <li>
-                                        {`${process.env.REACT_APP_SERVERURL}${elem.realRoomName[0].profileImgPath}`}
+                                        {getImageUrl(elem.realRoomName[0].profileImgPath)}
                                     </li>
                                 </Link>
                             </ul>

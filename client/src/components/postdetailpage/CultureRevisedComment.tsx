@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { User } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { getTimeObj } from '../../utils/getCurrentData';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 interface CultureRevisedCommentProps {
     index: number;
@@ -68,7 +69,7 @@ function CultureRevisedComment(props: CultureRevisedCommentProps) {
                 <div className="comment-image-container">
                     <img
                         className="comment-profile-pic"
-                        src={`${process.env.REACT_APP_SERVERURL}${profileImg}`}
+                        src={getImageUrl(profileImg)}
                         alt=""
                         onClick={() => {
                             window.location.href = `/searchUser/${props.userid}`;

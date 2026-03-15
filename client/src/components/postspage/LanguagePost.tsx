@@ -10,6 +10,7 @@ import { User } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { cookieConfig } from '../../utils/cookieConfig';
 import { getTimeObj } from '../../utils/getCurrentData';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 function LanguagePost(props: any) {
     const navigate = useNavigate();
@@ -130,7 +131,7 @@ function LanguagePost(props: any) {
                     <div className="lang-image-container">
                         <img
                             className="lang-profile-image"
-                            src={`${process.env.REACT_APP_SERVERURL}${props.profileImgPath}`}
+                            src={getImageUrl(props.profileImgPath)}
                             alt=""
                             onClick={() => {
                                 window.location.href = `/searchUser/${props.userid}`;

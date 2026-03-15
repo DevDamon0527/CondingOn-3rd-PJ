@@ -7,6 +7,7 @@ import axios from 'axios';
 import { User } from '../../types/types';
 import DeleteModal from '../Modals/DeleteModal';
 import Footer from '../Footer';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 const langToKorean = (lang: string): string => {
     const map: { [key: string]: string } = {
@@ -108,7 +109,7 @@ function MypageOption() {
                     <div className="imageC">
                         <div className="profile-image">
                             <img
-                                src={`${process.env.REACT_APP_SERVERURL}${profileImg}`}
+                                src={getImageUrl(profileImg)}
                                 alt=""
                             />
                         </div>

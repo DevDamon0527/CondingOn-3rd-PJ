@@ -10,6 +10,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { cookieConfig } from '../../utils/cookieConfig';
 import { getTimeObj } from '../../utils/getCurrentData';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -142,7 +143,7 @@ function CulturePost(props: any) {
                     <div className="cul-image-container">
                         <img
                             className="cul-profile-image"
-                            src={`${process.env.REACT_APP_SERVERURL}${props.profileImgPath}`}
+                            src={getImageUrl(props.profileImgPath)}
                             alt=""
                             onClick={() => {
                                 window.location.href = `/searchUser/${props.userid}`;
@@ -265,7 +266,7 @@ function CulturePost(props: any) {
                                 (image: string, index: number) => (
                                     <SwiperSlide key={index}>
                                         <img
-                                            src={`${process.env.REACT_APP_SERVERURL}${props.images.PostImages[index].path}`}
+                                            src={getImageUrl(props.images.PostImages[index].path)}
                                             alt={image}
                                             className="eachImage"
                                         />

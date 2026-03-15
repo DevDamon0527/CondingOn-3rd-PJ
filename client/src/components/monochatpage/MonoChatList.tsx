@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client';
 import '../../styles/MonoChatList.scss';
 import axios from 'axios';
+import { getImageUrl } from '../../utils/getImageUrl';
 import { useEffect, useState } from 'react';
 import useErrorHandler from '../../utils/useErrorHandler';
 import { Link } from 'react-router-dom';
@@ -82,7 +83,7 @@ function MonoChatList({ selectedLanguage }: MonoChatListProps) {
                                                 <div className="all-participant-container">
                                                     <div className="all-participant">
                                                         <img
-                                                            src={`${process.env.REACT_APP_SERVERURL}${elem.userInfo.profileImgPath}`}
+                                                            src={getImageUrl(elem.userInfo.profileImgPath)}
                                                             alt=""
                                                         />
                                                     </div>

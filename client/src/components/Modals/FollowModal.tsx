@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 type FollowModalProps = {
     closeModal: () => void;
@@ -32,7 +33,7 @@ const FollowModal: React.FC<FollowModalProps> = ({
                                             {user.profileImgPath ? (
                                                 <img
                                                     className="follow-modal-profile"
-                                                    src={`${process.env.REACT_APP_SERVERURL}${user.profileImgPath}`}
+                                                    src={getImageUrl(user.profileImgPath)}
                                                     alt={user.name}
                                                 />
                                             ) : (

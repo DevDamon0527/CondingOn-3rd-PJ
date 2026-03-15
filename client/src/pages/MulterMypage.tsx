@@ -7,6 +7,7 @@ import ConfirmModal from '../components/Modals/ConfirmModal';
 import { useCookies } from 'react-cookie';
 import { User } from '../types/types';
 import useErrorHandler from '../utils/useErrorHandler';
+import { getImageUrl } from '../utils/getImageUrl';
 
 function MulterMypage() {
     const image = useRef<any>(null);
@@ -37,7 +38,7 @@ function MulterMypage() {
             });
             setUserData(res.data.userDataObj);
             setProfileImg(
-                `${process.env.REACT_APP_SERVERURL}${res.data.userDataObj.profileImgPath}`
+                getImageUrl(res.data.userDataObj.profileImgPath)
             );
         } catch (error: any) {
             errorHandler(error.response?.status);

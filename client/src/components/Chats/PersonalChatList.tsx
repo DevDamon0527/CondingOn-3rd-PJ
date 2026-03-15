@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCurrnetData } from '../../utils/getCurrentData';
+import { getImageUrl } from '../../utils/getImageUrl';
 const socket = io(`${process.env.REACT_APP_SERVERURL}`);
 
 function PersonalChatList() {
@@ -39,7 +40,7 @@ function PersonalChatList() {
                                     <div className="chat-ImageDiv">
                                         <div className="chat-ProfileImage">
                                             <img
-                                                src={`${process.env.REACT_APP_SERVERURL}${elem.realRoomName[0].profileImgPath}`}
+                                                src={getImageUrl(elem.realRoomName[0].profileImgPath)}
                                                 alt=""
                                             />
                                             {/* 데이트 쓰는 방법 */}

@@ -3,6 +3,7 @@ import '../../styles/MypageHeader.scss';
 import { useState, useEffect } from 'react';
 import FollowModal from '../Modals/FollowModal';
 import axios from 'axios';
+import { getImageUrl } from '../../utils/getImageUrl';
 
 function MypageHeader(props: any) {
     const { followingNum, followerNum, userData, learningLang, profileImg } =
@@ -85,7 +86,7 @@ function MypageHeader(props: any) {
                         <div className="imageC">
                             <div className="profile-image">
                                 <img
-                                    src={`${process.env.REACT_APP_SERVERURL}${profileImg}`}
+                                    src={getImageUrl(profileImg)}
                                     alt=""
                                 />
                             </div>

@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import useErrorHandler from '../utils/useErrorHandler';
+import { getImageUrl } from '../utils/getImageUrl';
 import { getCurrentData3 } from '../utils/getCurrentData';
 import { cookieConfig } from '../utils/cookieConfig';
 
@@ -343,7 +344,7 @@ const ChatRoomPage: React.FC = () => {
                                                         <div className="received-message-header">
                                                             <div className="received-message-image">
                                                                 <img
-                                                                    src={`${process.env.REACT_APP_SERVERURL}${elem.User.profileImgPath}`}
+                                                                    src={getImageUrl(elem.User.profileImgPath)}
                                                                     alt=""
                                                                 />
                                                             </div>
@@ -560,7 +561,7 @@ const ChatRoomPage: React.FC = () => {
                                                                 }}
                                                             >
                                                                 <img
-                                                                    src={`${process.env.REACT_APP_SERVERURL}${elem.User.profileImgPath}`}
+                                                                    src={getImageUrl(elem.User.profileImgPath)}
                                                                     alt=""
                                                                 />
                                                             </div>

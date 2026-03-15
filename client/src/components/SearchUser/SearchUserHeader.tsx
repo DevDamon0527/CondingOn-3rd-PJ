@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/MypageHeader.scss';
 import '../../styles/SearchUserHeader.scss';
 import axios from 'axios';
+import { getImageUrl } from '../../utils/getImageUrl';
 import { useCookies } from 'react-cookie';
 import { useEffect, useState } from 'react';
 function SearchUserHeader(props: any) {
@@ -81,7 +82,7 @@ function SearchUserHeader(props: any) {
                         <div className="imageC">
                             <div className="profile-image">
                                 <img
-                                    src={`${process.env.REACT_APP_SERVERURL}${profileImg}`}
+                                    src={getImageUrl(profileImg)}
                                     alt=""
                                 />
                             </div>
