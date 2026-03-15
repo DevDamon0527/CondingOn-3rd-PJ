@@ -37,12 +37,15 @@
             width: 100%;
             @include flex();
             .chat-nickname {
+                font-family: $font-body;
                 font-size: larger;
+                font-weight: 600;
                 max-width: 118px;
                 max-height: 30px;
                 overflow: hidden;
             }
             .chat-date {
+                font-family: $font-meta;
                 margin-left: auto;
                 font-size: smaller;
                 color: gray;

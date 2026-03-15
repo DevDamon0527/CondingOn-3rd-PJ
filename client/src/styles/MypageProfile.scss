@@ -8,17 +8,26 @@
     margin-bottom: 8px;
 }
 
-// 수정 이미지 & text
+// 수정 버튼
 @mixin modify-C() {
     margin-left: auto;
     @include flex();
-    .modifyImg {
-        width: 24px;
-        height: 24px;
-        padding-bottom: 2px;
-    }
-    .modify-title {
+    .modify-btn {
+        padding: 3px 10px;
+        border: 1.5px solid $primary-color;
+        border-radius: 20px;
         color: $primary-color;
+        font-size: 12px;
+        font-weight: 600;
+        background: white;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.15s ease, color 0.15s ease;
+
+        &:hover {
+            background-color: $primary-color;
+            color: white;
+        }
     }
 }
 
@@ -53,20 +62,26 @@
         }
 
         .textarea-C {
-            padding: 12px;
-            background-color: #e9ffee;
-            @include flex-center();
-            box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-
             .introduce-textarea {
-                width: 50em;
+                width: 100%;
                 height: 91px;
-                background-color: #e9ffee;
-                border: none;
+                background-color: #f8fffe;
+                border: 1.5px solid #d4f0e0;
+                border-radius: 8px;
+                padding: 10px 12px;
                 outline: none;
                 resize: none;
                 overflow: auto;
+                font-size: 14px;
+                color: #1a1a1a;
+                transition: border-color 0.15s ease, background-color 0.15s ease;
+                box-sizing: border-box;
+
+                &:not([readonly]):focus {
+                    border-color: $primary-color;
+                    background-color: #f0fff6;
+                    box-shadow: 0 0 0 3px rgba(55, 175, 106, 0.12);
+                }
 
                 &::-webkit-scrollbar {
                     display: none;
@@ -109,26 +124,11 @@
             }
         }
     }
-    // 위치 부분
-    .location-C {
-        margin-top: 39px;
-        margin-bottom: 20px;
-        .location-C-Header {
-            @include C-Header();
-
-            .modify-C {
-                @include modify-C();
-            }
-        }
-        iframe {
-            width: calc(100%);
-            height: 350px;
-            border: none;
-            border-radius: 5%;
-        }
-    }
+    margin-bottom: 20px;
 }
 
 .header-title {
+    font-family: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+    font-size: 15px;
     color: $sub-color;
 }

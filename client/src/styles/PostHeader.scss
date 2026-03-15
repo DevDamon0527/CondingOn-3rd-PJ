@@ -1,3 +1,5 @@
+@import './Common.scss';
+
 .header-container {
     width: 100%;
     max-width: 40em;
@@ -11,11 +13,12 @@
 }
 
 .posts-title {
+    font-family: $font-title;
     margin-left: 16px;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 700;
     color: #1a1a1a;
-    letter-spacing: -0.3px;
+    letter-spacing: 0;
     width: auto;
     height: auto;
     background-image: none;
@@ -61,6 +64,7 @@
 }
 
 .create-post {
+    font-family: $font-body;
     padding: 5px 13px;
     border: 1.5px solid #37af6a;
     border-radius: 20px;

@@ -35,21 +35,16 @@ function MypageProfile(props: any) {
                 <div className="introduce-C-Header">
                     <div className="header-title">자기 소개</div>
                     <div className="modify-C">
-                        <div className="modifyImg">
-                            <img src="/images/ModifyLogo.png" alt="" />
-                        </div>
-                        <div
-                            className="modify-title"
+                        <button
+                            className="modify-btn"
                             onClick={() => {
-                                {
-                                    isEdited
-                                        ? submitIntroduction()
-                                        : editIntroduction();
-                                }
+                                isEdited
+                                    ? submitIntroduction()
+                                    : editIntroduction();
                             }}
                         >
                             {isEdited ? '수정 완료' : '수정'}
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div className="textarea-C">
@@ -75,12 +70,8 @@ function MypageProfile(props: any) {
                     <div className="header-title">학습 언어</div>
 
                     <div className="modify-C">
-                        <div className="modifyImg">
-                            <img src="/images/ModifyLogo.png" alt="" />
-                        </div>
-
                         <Link to={'/mypage/edit/language'}>
-                            <div className="modify-title">수정</div>
+                            <span className="modify-btn">수정</span>
                         </Link>
                     </div>
                 </div>
@@ -90,25 +81,6 @@ function MypageProfile(props: any) {
                             {element}
                         </div>
                     ))}
-                </div>
-            </div>
-            <div className="location-C">
-                <div className="location-C-Header">
-                    <div className="header-title">거주 지역</div>
-                    <div className="modify-C">
-                        <div className="modifyImg">
-                            <img src="/images/ModifyLogo.png" alt="" />
-                        </div>
-                        <div className="modify-title">수정</div>
-                    </div>
-                </div>
-                {/* Map */}
-                <div className="map-Container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202405.34241565314!2d126.97413929999999!3d37.5648761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2012d5c39cf%3A0x7e11eca1405bf29b!2z7ISc7Jq47Yq567OE7Iuc!5e0!3m2!1sko!2skr!4v1705836598468!5m2!1sko!2skr"
-                        loading="lazy"
-                        allowFullScreen
-                    ></iframe>
                 </div>
             </div>
         </div>

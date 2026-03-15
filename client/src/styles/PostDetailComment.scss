@@ -54,7 +54,7 @@
         font-weight: bold;
         width: 100%;
         height: fit-content;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins', 'Noto Sans KR', sans-serif;
     }
 
     .comment-more {
@@ -69,9 +69,10 @@
     width: 100%;
     height: auto;
     font-size: 14px;
+    line-height: 1.6;
     overflow: hidden;
     word-wrap: break-word;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', 'Noto Sans KR', sans-serif;
 }
 
 .comment-footer-container {
@@ -81,7 +82,9 @@
     align-items: center;
 
     .comment-date {
+        font-family: 'Poppins', 'Noto Sans KR', sans-serif;
         font-size: 12px;
+        color: #888888;
     }
 }
 

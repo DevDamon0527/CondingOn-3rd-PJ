@@ -1,3 +1,5 @@
+@import './Common.scss';
+
 .postdetail-header-container {
     width: 100%;
     max-width: 40em;
@@ -11,7 +13,9 @@
 }
 
 .postdetail-header-text {
+    font-family: $font-title;
     margin-left: 8px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
 }

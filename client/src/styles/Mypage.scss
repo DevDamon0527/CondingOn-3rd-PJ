@@ -16,10 +16,11 @@
     align-items: center;
 
     .mypage-header-title {
-        font-size: 17px;
+        font-family: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+        font-size: 20px;
         font-weight: 700;
         color: #1a1a1a;
-        letter-spacing: -0.3px;
+        letter-spacing: 0;
     }
 
     > a {
@@ -45,10 +46,14 @@
         cursor: pointer;
 
         .profileClick {
+            font-family: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+            font-size: 15px;
             border-bottom: 1px solid lightgray;
             width: 50%;
             height: 2em;
             @include flex-center();
+            color: #888888;
+            transition: color 0.15s ease;
         }
         .postClick {
             @extend .profileClick;
@@ -57,8 +62,8 @@
         // 컴포넌트 변경시
         .changed {
             color: $primary-color;
-            font-weight: bolder;
-            font-size: large;
+            font-weight: bold;
+            font-size: 16px;
             border-bottom: 3px solid $primary-color;
         }
     }

@@ -21,10 +21,11 @@
     }
 
     .settingBack {
-        font-size: 17px;
+        font-family: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+        font-size: 20px;
         font-weight: 700;
         color: #1a1a1a;
-        letter-spacing: -0.3px;
+        letter-spacing: 0;
         margin-left: 6px;
     }
 
@@ -139,7 +140,9 @@
 
     .settingDetail-Header-text {
         margin-left: 8px;
-        font-weight: bolder;
+        font-family: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+        font-size: 16px;
+        font-weight: bold;
     }
 }
 

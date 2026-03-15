@@ -5,7 +5,7 @@ type FollowModalProps = {
     closeModal: () => void;
     title: string;
     userId: string;
-    users: any[]; // 사용자 목록에 대한 타입
+    users: any[];
     modalContent: string | null;
 };
 
@@ -23,12 +23,33 @@ const FollowModal: React.FC<FollowModalProps> = ({
                     <button onClick={closeModal}>&times;</button>
                 </div>
                 <div className="modal-body">
-                    {/* 사용자 목록 렌더링 */}
                     <ul>
                         {users.map((user, index) => (
                             <li key={index}>
                                 <Link to={`/searchUser/${user.id}`}>
-                                    {user.name}
+                                    <div className="follow-modal-user-item">
+                                        <div className="follow-modal-img-wrap">
+                                            {user.profileImgPath ? (
+                                                <img
+                                                    className="follow-modal-profile"
+                                                    src={`${process.env.REACT_APP_SERVERURL}${user.profileImgPath}`}
+                                                    alt={user.name}
+                                                />
+                                            ) : (
+                                                <div className="follow-modal-profile follow-modal-profile--empty" />
+                                            )}
+                                            {user.nation && (
+                                                <img
+                                                    className="follow-modal-flag"
+                                                    src={`/images/flag/${user.nation}.png`}
+                                                    alt={user.nation}
+                                                />
+                                            )}
+                                        </div>
+                                        <span className="follow-modal-name">
+                                            {user.name}
+                                        </span>
+                                    </div>
                                 </Link>
                             </li>
                         ))}

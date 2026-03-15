@@ -3,6 +3,14 @@ $all-width: 100%;
 
 // 메인 컬러
 $primary-color: #37af6a;
+
+// --- Typography System ---
+// 1) 헤더/타이틀: 귀엽고 감성적인 느낌, 한국어 fallback 확보
+$font-title: 'Gamja Flower', 'Noto Sans KR', sans-serif;
+// 2) 본문/내용: 가독성 최우선, 한국어·영어 모두 커버
+$font-body: 'Noto Sans KR', sans-serif;
+// 3) 숫자/날짜/메타: Poppins로 깔끔하게, 한국어 fallback
+$font-meta: 'Poppins', 'Noto Sans KR', sans-serif;
 $sub-color: #888888;
 $--btn--color: #dabca8b3;
 

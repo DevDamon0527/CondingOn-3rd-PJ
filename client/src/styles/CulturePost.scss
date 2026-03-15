@@ -1,3 +1,5 @@
+@import './Common.scss';
+
 $main-color: #37af6a;
 $secondary-color: #888;
 
@@ -9,7 +11,7 @@ $secondary-color: #888;
 .cul-post {
     padding-top: 10px;
     background-color: white;
-    font-family: 'Poppins', sans-serif;
+    font-family: $font-body;
 }
 
 .cul-image-container {
@@ -155,6 +157,7 @@ $secondary-color: #888;
 // 포스트 작성 부분
 
 .cul-time {
+    font-family: $font-meta;
     font-size: 12px;
     color: $secondary-color;
 }

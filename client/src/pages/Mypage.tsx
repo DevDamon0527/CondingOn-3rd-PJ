@@ -133,11 +133,6 @@ function Mypage() {
                     />
                 ) : (
                     <div className="mypagePostItems-C">
-                        <div className="addPostImg">
-                            <Link to={'/newpost'}>
-                                <img src="/images/addpost.png" alt="" />
-                            </Link>
-                        </div>
                         <div className="mypage-post-container">
                             {sortedPostData.map((post: any) => {
                                 return post.postType === 'c' ? (
