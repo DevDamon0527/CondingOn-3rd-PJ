@@ -1,43 +1,55 @@
-.newpost-photos-container {
-    width: calc(100% - 1.5em);
-    height: fit-content;
-    overflow: scroll;
-    margin-top: 10px;
-    margin-left: 1.5em;
-    display: flex;
-    flex-flow: wrap;
+@import './Common.scss';
 
-    overflow: auto;
+.newpost-photos-container {
+    width: 100%;
+    height: fit-content;
+    padding: 12px 16px 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid #f0f0f0;
 
     &::-webkit-scrollbar {
         display: none;
     }
 
     .camera {
-        width: 104px;
-        height: 104px;
+        width: 90px;
+        height: 90px;
+        border: 2px dashed #d0d0d0;
+        border-radius: 10px;
         background-image: url('../img/camera.png');
-        background-size: cover;
-        margin-right: 16px;
-        margin-bottom: 16px;
+        background-size: 34px 34px;
+        background-repeat: no-repeat;
+        background-position: center 28%;
+        background-color: #fafafa;
         cursor: pointer;
+        position: relative;
+        transition: border-color 0.15s ease, background-color 0.15s ease;
+
+        &:hover {
+            border-color: $primary-color;
+            background-color: #f0fff4;
+        }
+
+        &::after {
+            content: '사진 추가';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: $font-body;
+            font-size: 10px;
+            color: #999;
+        }
     }
 
     .image {
-        width: 104px;
-        height: 104px;
-        border: 1px solid lightgrey;
-        margin-right: 16px;
-        margin-bottom: 16px;
-    }
-}
-
-.newpost-photos-container::-webkit-scrollbar {
-    display: none;
-}
-
-@for $n from 1 through 4 {
-    .newpost-photos-container:nth-child(#{3n}) {
-        margin-right: 0px;
+        width: 90px;
+        height: 90px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        object-fit: cover;
     }
 }

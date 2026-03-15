@@ -84,18 +84,13 @@ function LanguageComment(props: any) {
                         >
                             {props.name}
                         </Link>
-                        {props.userid === idCookie ? (
-                            <div className="modal-parent">
-                                <div
-                                    className="comment-more"
-                                    onClick={() => {
-                                        deleteComment();
-                                        // modalShow();
-                                    }}
-                                ></div>
-                            </div>
-                        ) : (
-                            ''
+                        {props.userid === idCookie && (
+                            <button
+                                className="comment-delete-btn"
+                                onClick={deleteComment}
+                            >
+                                삭제
+                            </button>
                         )}
                     </div>
                     <div className="comment-content">{props.content}</div>

@@ -23,24 +23,31 @@ import '../../styles/Swiper.scss';
 
 function CulturePost(props: any) {
     const navigate = useNavigate();
-    const [cookies, setCookies, removeCookies] = useCookies(['id', 'content']);
+    const [cookies, setCookies] = useCookies(['id', 'content']);
     const idCookie = cookies['id'];
     const [userData, setUserData] = useState<User>();
     const [learningLang, setLearningLang] = useState();
     const deletemodal = useRef<any>();
-    const culdeletemodal = deletemodal.current;
     const { id, likeCount, isLiked, getCulturePosts, userid } = props;
 
-    const [didLike, setDidLike] = useState(isLiked);
+    const [didLike, setDidLike] = useState(Boolean(isLiked));
     const contentInDiv = useRef<any>();
-    const [likeCountState, setLikeCountState] = useState(likeCount);
+    const [likeCountState, setLikeCountState] = useState(Number(likeCount) || 0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const modalShow = () => {
-        culdeletemodal?.classList.remove('opacity');
-        setTimeout(() => {
-            culdeletemodal?.classList.add('opacity');
-        }, 5000);
-    };
+    useEffect(() => {
+        if (!isModalOpen) return;
+        const handleOutsideClick = (e: MouseEvent) => {
+            if (
+                deletemodal.current &&
+                !deletemodal.current.contains(e.target as Node)
+            ) {
+                setIsModalOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => document.removeEventListener('mousedown', handleOutsideClick);
+    }, [isModalOpen]);
     const deletePost = async () => {
         let res;
         try {
@@ -103,8 +110,9 @@ function CulturePost(props: any) {
 
     //문화 좋아요 버튼 토글
     const culToggleLike = async () => {
+        if (idCookie === props.userid) return;
         try {
-            const res = await axios({
+            await axios({
                 method: 'post',
                 url: `${process.env.REACT_APP_SERVERURL}/cul/posts/${id}`,
                 data: {
@@ -191,24 +199,32 @@ function CulturePost(props: any) {
                         {getTimeObj(props.createdAt).minute}분
                     </div>{' '}
                     {idCookie === props.userid ? (
-                        <div>
+                        <div style={{ position: 'relative' }}>
                             <div
                                 className="cul-more"
-                                onClick={() => {
-                                    modalShow();
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsModalOpen((prev) => !prev);
                                 }}
                             ></div>
                             <div
-                                className="modal-container opacity"
+                                className={`modal-container${isModalOpen ? '' : ' opacity'}`}
                                 ref={deletemodal}
                             >
-                                <div className="edit-text">
+                                <div
+                                    className="edit-text"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(`/c-postedit/${props.id}`);
+                                    }}
+                                >
                                     <span>수정하기</span>
                                 </div>
                                 <div className="modal-line"></div>
                                 <div
                                     className="delete-text"
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        e.stopPropagation();
                                         deletePost();
                                     }}
                                 >

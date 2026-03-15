@@ -2,11 +2,13 @@
 
 .newpost-header-container {
     width: 100%;
-    height: 48px;
+    max-width: 40em;
+    height: 3em;
     display: flex;
     align-items: center;
     background-color: white;
-    margin-top: -24px;
+    border-bottom: 1.5px solid #eeeeee;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 
     .newpost-header-text {
         font-family: $font-title;
@@ -22,5 +24,7 @@
     width: 24px;
     height: 24px;
     background-image: url('../img/backarrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     cursor: pointer;
 }

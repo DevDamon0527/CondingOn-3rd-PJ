@@ -27,6 +27,7 @@ import ChatCorrectingPage from './pages/ChatCorrectingPage';
 
 import CultureCorrectingPage from './pages/CultureCorrectingPage';
 import LanguageCorrectingPage from './pages/LanguageCorrectingPage';
+import EditPostPage from './pages/EditPostPage';
 
 import Error403 from './pages/errorPages/Error403';
 import Error404 from './pages/errorPages/Error404';
@@ -106,6 +107,8 @@ function App() {
                     <Route path="/monochat" element={<MonoChatPage />} />
 
                     <Route path="/errorlog" element={<ErrorLogPage />} />
+                    <Route path="/c-postedit/:id" element={<EditPostPage />} />
+                    <Route path="/l-postedit/:id" element={<EditPostPage />} />
                     <Route path="*" element={<Error404 />} />
                 </Routes>
             </BrowserRouter>

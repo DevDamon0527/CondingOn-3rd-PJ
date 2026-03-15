@@ -225,7 +225,7 @@ export const getChatLog = async (
         });
 
         const isFirst = await Chat.findOne({
-            where: { roomNum: roomNum, userid: userid, isFirst: true },
+            where: { roomNum: roomNum, userid: userid },
         });
         if (!isFirst) {
             const username = await User.findOne({
@@ -283,8 +283,18 @@ export const getChatLog = async (
             result.dataValues.chatCounting = chatCounting;
         }
 
+        // isFirst 메시지(입장 메시지)는 유저당 하나만 노출 — 중복 입장 메시지 제거
+        const seenIsFirst = new Set<string>();
+        const filteredResults = results.filter((result: any) => {
+            if (result.dataValues.isFirst) {
+                if (seenIsFirst.has(result.dataValues.userid)) return false;
+                seenIsFirst.add(result.dataValues.userid);
+            }
+            return true;
+        });
+
         res.json({
-            chatLog: results,
+            chatLog: filteredResults,
             roomInfo: roomInfo,
             chatNumber: chatNumber,
         });

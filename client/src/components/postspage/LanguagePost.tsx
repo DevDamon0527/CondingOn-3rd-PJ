@@ -15,12 +15,12 @@ function LanguagePost(props: any) {
     const navigate = useNavigate();
 
     const { id, likeCount, isLiked, getLanguagePosts } = props;
-    const [cookies, setCookies, removeCookies] = useCookies(['id', 'content']);
+    const [cookies, setCookies] = useCookies(['id', 'content']);
     const idCookie = cookies['id'];
     const [userData, setUserData] = useState<User>();
     const [learningLang, setLearningLang] = useState();
-    const [didLike, setDidLike] = useState(isLiked);
-    const [likeCountState, setLikeCountState] = useState(likeCount);
+    const [didLike, setDidLike] = useState(Boolean(isLiked));
+    const [likeCountState, setLikeCountState] = useState(Number(likeCount) || 0);
     const contentInDiv = useRef<any>();
 
     const shortName = (nation: string): string | undefined => {
@@ -65,14 +65,21 @@ function LanguagePost(props: any) {
     }, [props.id]);
 
     const deletemodal = useRef<any>();
-    const langdeletemodal = deletemodal.current;
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const modalShow = () => {
-        langdeletemodal?.classList.remove('opacity');
-        setTimeout(() => {
-            langdeletemodal?.classList.add('opacity');
-        }, 5000);
-    };
+    useEffect(() => {
+        if (!isModalOpen) return;
+        const handleOutsideClick = (e: MouseEvent) => {
+            if (
+                deletemodal.current &&
+                !deletemodal.current.contains(e.target as Node)
+            ) {
+                setIsModalOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => document.removeEventListener('mousedown', handleOutsideClick);
+    }, [isModalOpen]);
 
     const deletePost = async () => {
         let res;
@@ -94,8 +101,9 @@ function LanguagePost(props: any) {
     };
     //언어 좋아요 버튼 토글
     const langToggleLike = async () => {
+        if (idCookie === props.userid) return;
         try {
-            const res = await axios({
+            await axios({
                 method: 'post',
                 url: `${process.env.REACT_APP_SERVERURL}/lang/posts/${id}`,
                 data: {
@@ -179,24 +187,32 @@ function LanguagePost(props: any) {
                     </div>
 
                     {idCookie === props.userid ? (
-                        <div>
+                        <div style={{ position: 'relative' }}>
                             <div
                                 className="lang-more"
-                                onClick={() => {
-                                    modalShow();
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setIsModalOpen((prev) => !prev);
                                 }}
                             ></div>
                             <div
-                                className="modal-container opacity"
+                                className={`modal-container${isModalOpen ? '' : ' opacity'}`}
                                 ref={deletemodal}
                             >
-                                <div className="edit-text">
+                                <div
+                                    className="edit-text"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(`/l-postedit/${props.id}`);
+                                    }}
+                                >
                                     <span>수정하기</span>
                                 </div>
                                 <div className="modal-line"></div>
                                 <div
                                     className="delete-text"
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        e.stopPropagation();
                                         deletePost();
                                     }}
                                 >

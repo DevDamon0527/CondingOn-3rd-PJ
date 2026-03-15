@@ -94,12 +94,12 @@ function LanguageRevisedComment(props: LanguageRevisedCommentProps) {
                             {props.name}
                         </Link>
                         {props.userid === idCookie && (
-                            <div
-                                className="comment-more"
-                                onClick={() => {
-                                    deleteComment();
-                                }}
-                            />
+                            <button
+                                className="comment-delete-btn"
+                                onClick={deleteComment}
+                            >
+                                삭제
+                            </button>
                         )}
                     </div>
                     <div className="comment-content">

@@ -73,15 +73,13 @@ function CultureComment(props: any) {
                         >
                             {props.name}
                         </Link>
-                        {props.userid == idCookie ? (
-                            <div
-                                className="comment-more"
-                                onClick={() => {
-                                    deleteComment();
-                                }}
-                            ></div>
-                        ) : (
-                            ''
+                        {props.userid == idCookie && (
+                            <button
+                                className="comment-delete-btn"
+                                onClick={deleteComment}
+                            >
+                                삭제
+                            </button>
                         )}
                     </div>
                     <div className="comment-content">{props.content}</div>

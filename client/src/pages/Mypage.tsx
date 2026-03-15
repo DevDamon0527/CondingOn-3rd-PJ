@@ -150,6 +150,9 @@ function Mypage() {
                                             post.User.profileImgPath
                                         }
                                         firLang={post.User.firLang}
+                                        likeCount={post.likeCount}
+                                        isLiked={post.isLiked}
+                                        getCulturePosts={getMyPage}
                                     />
                                 ) : post.postType === 'l' ? (
                                     <LanguagePost
@@ -165,6 +168,9 @@ function Mypage() {
                                             post.User.profileImgPath
                                         }
                                         firLang={post.User.firLang}
+                                        likeCount={post.likeCount}
+                                        isLiked={post.isLiked}
+                                        getLanguagePosts={getMyPage}
                                     />
                                 ) : null;
                             })}

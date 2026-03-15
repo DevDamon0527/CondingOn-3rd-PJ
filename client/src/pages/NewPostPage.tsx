@@ -107,8 +107,6 @@ function NewPostPage() {
             </div>
             <div className="newpostpage-container">
                 <div className="newpostpage">
-                    <img src="/public\\posts\\aaaa1706235325370.jpg" alt="" />
-
                     <div className="writepost-container">
                         <div className="writepost-inner-container">
                             <div className="writepost-title">포스트 내용</div>
