@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import '../../styles/ConfirmModal.scss';
 
 function ConfirmModal({ show, setShow, navigate }: any) {
     const handleClose = () => {
@@ -9,28 +10,25 @@ function ConfirmModal({ show, setShow, navigate }: any) {
 
     return (
         <>
-            {/* 변경 완료 되었을 시에 모달! */}
-            <Modal show={show} onHide={handleClose} centered>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                dialogClassName="confirm-modal-dialog"
+            >
                 <Modal.Header closeButton>
-                    <Modal.Title
-                        style={{
-                            color: 'rgb(91, 91, 238)',
-                            fontWeight: 'bold',
-                        }}
-                    >
-                        완료!
+                    <Modal.Title className="confirm-modal-title">
+                        변경 완료
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>변경이 완료되었습니다.</Modal.Body>
-                <Modal.Footer>
+                <Modal.Body className="confirm-modal-body">
+                    변경이 완료되었습니다.
+                </Modal.Body>
+                <Modal.Footer className="confirm-modal-footer">
                     <Button
-                        style={{ backgroundColor: '#dabca8b3', color: 'black' }}
-                        variant="secondary"
-                        onClick={() => {
-                            handleClose();
-                        }}
+                        className="confirm-btn-close"
+                        onClick={handleClose}
                     >
-                        닫기
+                        확인
                     </Button>
                 </Modal.Footer>
             </Modal>

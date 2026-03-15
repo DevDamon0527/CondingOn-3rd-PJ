@@ -1,7 +1,14 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
 import '../../styles/MypageProfile.scss';
-import { Link } from 'react-router-dom';
+
+const langToKorean = (lang: string): string => {
+    const map: { [key: string]: string } = {
+        Korean: '한국어', English: '영어', Chinese: '중국어',
+        Japanese: '일본어', French: '프랑스어', German: '독일어',
+    };
+    return map[lang] || lang;
+};
 
 function MypageProfile(props: any) {
     const { userData, learningLang } = props;
@@ -62,23 +69,17 @@ function MypageProfile(props: any) {
                     <div className="header-title">모국어</div>
                 </div>
                 <div className="native-result-c">
-                    <div className="nativeResultDiv">{userData.firLang}</div>
+                    <div className="nativeResultDiv">{langToKorean(userData.firLang)}</div>
                 </div>
             </div>
             <div className="learnLang-C">
                 <div className="learnLang-C-Header">
                     <div className="header-title">학습 언어</div>
-
-                    <div className="modify-C">
-                        <Link to={'/mypage/edit/language'}>
-                            <span className="modify-btn">수정</span>
-                        </Link>
-                    </div>
                 </div>
                 <div className="learn-result-c">
                     {learningLang.map((element: any, key: any) => (
                         <div className="learnResultDiv" key={key}>
-                            {element}
+                            {langToKorean(element)}
                         </div>
                     ))}
                 </div>

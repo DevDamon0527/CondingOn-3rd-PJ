@@ -1,0 +1,66 @@
+@import './Common.scss';
+
+.confirm-modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    max-width: 360px !important;
+    width: 90% !important;
+
+    .modal-content {
+        width: 100% !important;
+        border-radius: 14px !important;
+        overflow: hidden;
+    }
+
+    .modal-header {
+        padding: 16px 20px 12px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .modal-body {
+        padding: 16px 20px;
+    }
+
+    .modal-footer {
+        padding: 12px 20px 16px;
+        border-top: 1px solid #f0f0f0;
+    }
+}
+
+.confirm-modal-title {
+    font-family: $font-title;
+    font-size: 17px;
+    font-weight: 700;
+    color: $primary-color;
+}
+
+.confirm-modal-body {
+    font-family: $font-body;
+    font-size: 14px;
+    color: #444;
+    text-align: center;
+    padding: 20px !important;
+}
+
+.confirm-btn-close {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: $primary-color !important;
+    border-color: $primary-color !important;
+    color: white !important;
+    border-radius: 10px;
+    padding: 8px 28px;
+    width: 100%;
+
+    &:hover {
+        background-color: darken(#37af6a, 8%) !important;
+        border-color: darken(#37af6a, 8%) !important;
+    }
+    &:active {
+        transform: scale(0.97);
+    }
+}

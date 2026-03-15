@@ -1,17 +1,23 @@
 import '../../styles/MypageOption.scss';
-import Topbar from '../Topbar';
 import { Link, useNavigate } from 'react-router-dom';
-
 import '../../styles/Mypage.scss';
 import { useCookies } from 'react-cookie';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '../../types/types';
 import DeleteModal from '../Modals/DeleteModal';
 import Footer from '../Footer';
 
+const langToKorean = (lang: string): string => {
+    const map: { [key: string]: string } = {
+        Korean: '한국어', English: '영어', Chinese: '중국어',
+        Japanese: '일본어', French: '프랑스어', German: '독일어',
+    };
+    return map[lang] || lang;
+};
+
 function MypageOption() {
-    const [cookies, setCookies, removeCookies] = useCookies(['id']);
+    const [cookies, , removeCookies] = useCookies(['id']);
     const idCookie = cookies['id'];
     const [profileImg, setProfileImg] = useState<string>('');
 
@@ -46,7 +52,7 @@ function MypageOption() {
     }, []);
 
     if (!userData) {
-        return null; // 또는 로딩 스피너 등을 보여줄 수 있음.
+        return null;
     }
     // 로그아웃 요청
     const userlogout = async () => {
@@ -97,7 +103,6 @@ function MypageOption() {
                 </div>
             </div>
             <div className="myPageOption-container">
-                {/* 설정 헤드 부분 */}
                 {/* 프로필 수정 */}
                 <div className="settingProfile">
                     <div className="imageC">
@@ -122,19 +127,15 @@ function MypageOption() {
                             <div>{userData.nation}</div>
                         </div>
                     </div>
-
-                    <div className="editImage">
-                        <Link to={'/multermypage'}>
-                            <img src="/images/EditButton.png" alt="" />
-                        </Link>
-                    </div>
+                    <Link to={'/multermypage'} className="edit-profile-btn">
+                        프로필 수정
+                    </Link>
                 </div>
 
                 {/* 상세정보 수정 */}
                 <div className="settingDetail">
                     {/* My Info */}
                     <div className="myInformation-container">
-                        {/* 헤더 */}
                         <div className="settingDetail-Header">
                             <div>
                                 <img src="/images/DecoBar.png" alt="" />
@@ -143,7 +144,6 @@ function MypageOption() {
                                 내 정보
                             </div>
                         </div>
-                        {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
                                 <div>닉네임</div>
@@ -153,29 +153,20 @@ function MypageOption() {
                             </div>
                             <div className="settingDetail-Content-items">
                                 <div>비밀번호</div>
-                                <div className="result-Content-items">
-                                    변경
-                                </div>
-                                <Link to={'/mypage/edit/password'}>
-                                    <div className="rightPointImgDiv">
-                                        <img
-                                            src="/images/RightPoint.png"
-                                            alt=""
-                                        />
-                                    </div>
+                                <Link to={'/mypage/edit/password'} className="option-edit-btn">
+                                    수정
                                 </Link>
                             </div>
                             <div className="settingDetail-Content-items">
                                 <div>성별</div>
                                 <div className="result-Content-items">
-                                    {userData.gender === 'm'
-                                        ? '남성'
-                                        : '여성'}
+                                    {userData.gender === 'm' ? '남성' : '여성'}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* Learning Laguage Info */}
+
+                    {/* Learning Language Info */}
                     <div className="myInformation-container">
                         <div className="settingDetail-Header">
                             <div>
@@ -185,32 +176,26 @@ function MypageOption() {
                                 학습 언어 정보
                             </div>
                         </div>
-                        {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
                                 <div>모국어</div>
                                 <div className="result-Content-items">
-                                    {userData.firLang}
+                                    {langToKorean(userData.firLang)}
                                 </div>
                             </div>
                             <div className="settingDetail-Content-items">
                                 <div>학습 언어</div>
                                 <div className="result-Content-items">
-                                    {learningLang[0]}
+                                    {langToKorean(learningLang[0])}
                                 </div>
-                                <Link to={'/mypage/edit/language'}>
-                                    <div>
-                                        <img
-                                            src="/images/RightPoint.png"
-                                            alt=""
-                                        />
-                                    </div>
+                                <Link to={'/mypage/edit/language'} className="option-edit-btn">
+                                    수정
                                 </Link>
                             </div>
                         </div>
                     </div>
 
-                    {/* Sevice Info */}
+                    {/* Service Info */}
                     <div className="myInformation-container">
                         <div className="settingDetail-Header">
                             <div>
@@ -220,20 +205,15 @@ function MypageOption() {
                                 서비스 정보
                             </div>
                         </div>
-                        {/* 내용 */}
                         <div className="settingDetail-Content">
                             <div className="settingDetail-Content-items">
                                 <div className="withdrawal">회원 탈퇴</div>
-                                <div className="result-Content-items"></div>
-                                <div className="userdelete-div">
-                                    <img
-                                        src="/images/RightPoint.png"
-                                        alt=""
-                                        onClick={() => {
-                                            handleDeleteModal();
-                                        }}
-                                    />
-                                </div>
+                                <button
+                                    className="option-delete-btn"
+                                    onClick={handleDeleteModal}
+                                >
+                                    탈퇴
+                                </button>
                             </div>
                         </div>
                     </div>

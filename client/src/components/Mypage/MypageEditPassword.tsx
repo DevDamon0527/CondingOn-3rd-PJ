@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import Topbar from '../Topbar';
 import '../../styles/MypageEditPassword.scss';
 import { useRef, useState } from 'react';
 import { useCookies } from 'react-cookie';
@@ -8,18 +7,12 @@ import ConfirmModal from '../Modals/ConfirmModal';
 
 function MypageEditPassword() {
     const [cookies] = useCookies(['id']);
-    // cookies call cookies는 객체라서 [] 접근법으로 불러옵니다.
     const idCookie = cookies['id'];
-
-    const [editPasswordErrorMsg, setEditPasswordErrorMsg] =
-        useState<String>('');
+    const [editPasswordErrorMsg, setEditPasswordErrorMsg] = useState<string>('');
 
     const navigate = useNavigate();
-    // 모달 창 상태 변화
-    const [showConfirmModal, setShowConfirmModal] = useState<any>({
-        // 모달 초기 상태 false!
-        show: false,
-    });
+    const [showConfirmModal, setShowConfirmModal] = useState<any>({ show: false });
+
     const inputCurrentPasswordRef = useRef<HTMLInputElement>(null);
     const inputNewPasswordRef = useRef<HTMLInputElement>(null);
     const inputConfirmNewPasswordRef = useRef<HTMLInputElement>(null);
@@ -29,6 +22,20 @@ function MypageEditPassword() {
         const currentPassword = inputCurrentPasswordRef.current?.value;
         const newPassword = inputNewPasswordRef.current?.value;
         const confirmNewPassword = inputConfirmNewPasswordRef.current?.value;
+
+        // 클라이언트 유효성 검사
+        if (!currentPassword) {
+            setEditPasswordErrorMsg('현재 비밀번호를 입력해주세요.');
+            return;
+        }
+        if (!newPassword || newPassword.trim().length < 6) {
+            setEditPasswordErrorMsg('새 비밀번호는 6자 이상이어야 합니다.');
+            return;
+        }
+        if (newPassword !== confirmNewPassword) {
+            setEditPasswordErrorMsg('비밀번호 확인이 일치하지 않습니다.');
+            return;
+        }
 
         try {
             const res = await axios({
@@ -52,23 +59,17 @@ function MypageEditPassword() {
         }
     };
 
-    // 모달 창 실행 함수
     const handleConfirmModal = () => {
-        // 실행 되면 모달 상태를 true로!
-        setShowConfirmModal({
-            show: true,
-        });
+        setShowConfirmModal({ show: true });
     };
 
     return (
         <>
-            {/* 모달 컴포넌트 */}
             <ConfirmModal
                 show={showConfirmModal.show}
                 setShow={setShowConfirmModal}
                 navigate={navigate}
             />
-            {/* 설정 헤드 부분 */}
             <div className="myPageOption-C-Header">
                 <Link to="/mypage/option">
                     <div>
@@ -78,43 +79,45 @@ function MypageEditPassword() {
                 <div className="settingBack">비밀번호 변경</div>
             </div>
             <div className="myPageOption-container multer2">
-                {/* 내용 */}
                 <div className="editPassword-Container">
-                    <div className="editContainer-title">비밀번호</div>
+                    <div className="editContainer-title">비밀번호 변경</div>
                     <div className="editContainer-smalltitle">
                         변경할 비밀번호를 입력해주세요
                     </div>
-                    <form action="" className="editPassword-Form">
-                        <label htmlFor="">현재 비밀번호</label>
-                        <br />
-                        <input
-                            className=""
-                            type="password"
-                            ref={inputCurrentPasswordRef}
-                        />
-                        <br />
-                        <label htmlFor="">변경할 비밀번호</label>
-                        <br />
-                        <input type="password" ref={inputNewPasswordRef} />
-                        <br />
-                        <label htmlFor="">변경할 비밀번호 재확인</label>
-                        <br />
-                        <input
-                            type="password"
-                            ref={inputConfirmNewPasswordRef}
-                        />
-                        <br />
-                        <div className="getred editPasswordErrorMsg">
-                            {editPasswordErrorMsg}
+                    <form className="editPassword-Form">
+                        <div className="edit-form-group">
+                            <label>현재 비밀번호</label>
+                            <input
+                                type="password"
+                                placeholder="현재 비밀번호를 입력해주세요"
+                                ref={inputCurrentPasswordRef}
+                                onChange={() => setEditPasswordErrorMsg('')}
+                            />
                         </div>
+                        <div className="edit-form-group">
+                            <label>새 비밀번호</label>
+                            <input
+                                type="password"
+                                placeholder="6자 이상 입력해주세요"
+                                ref={inputNewPasswordRef}
+                                onChange={() => setEditPasswordErrorMsg('')}
+                            />
+                        </div>
+                        <div className="edit-form-group">
+                            <label>새 비밀번호 확인</label>
+                            <input
+                                type="password"
+                                placeholder="비밀번호를 다시 입력해주세요"
+                                ref={inputConfirmNewPasswordRef}
+                                onChange={() => setEditPasswordErrorMsg('')}
+                            />
+                        </div>
+                        {editPasswordErrorMsg && (
+                            <div className="edit-error-msg">{editPasswordErrorMsg}</div>
+                        )}
                     </form>
-                    <button
-                        className="edit-ConfirmBtn"
-                        onClick={(e: React.MouseEvent<HTMLElement>) =>
-                            submitEditForm(e)
-                        }
-                    >
-                        확인
+                    <button className="edit-ConfirmBtn" onClick={submitEditForm}>
+                        변경 완료
                     </button>
                 </div>
             </div>

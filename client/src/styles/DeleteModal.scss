@@ -1,0 +1,111 @@
+@import './Common.scss';
+
+/* ── 뷰포트 기준 정중앙 포지셔닝 ── */
+.delete-modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: calc(100% - 32px) !important;
+    max-width: 380px !important;
+    min-height: auto !important;
+
+    .modal-content {
+        width: 100% !important;
+        border: none !important;
+        border-radius: 16px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14) !important;
+        overflow: hidden;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-header {
+        margin-bottom: 0 !important;
+        padding: 18px 22px 14px !important;
+        border-bottom: 1px solid #ffe5e5 !important;
+        background-color: #fff8f8;
+
+        .btn-close {
+            opacity: 0.4;
+            transition: opacity 0.15s ease;
+            &:hover { opacity: 0.8; }
+        }
+    }
+
+    .modal-body {
+        max-height: none !important;
+        overflow-y: visible !important;
+        padding: 20px 22px !important;
+        background-color: white;
+    }
+
+    .modal-footer {
+        padding: 14px 22px 18px !important;
+        border-top: 1px solid #eeeeee !important;
+        background-color: white;
+        gap: 8px;
+    }
+}
+
+/* ── 타이틀 ── */
+.delete-modal-title {
+    font-family: $font-title !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    color: #ef4444 !important;
+}
+
+/* ── 본문 텍스트 ── */
+.delete-modal-text {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+}
+
+.delete-modal-subtext {
+    font-family: $font-body;
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* ── 취소 버튼 ── */
+.delete-btn-cancel {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    background-color: #f2f2f2 !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 7px 20px !important;
+    transition: background-color 0.15s ease !important;
+
+    &:hover {
+        background-color: #e5e5e5 !important;
+        color: #333 !important;
+    }
+    &:active { transform: scale(0.97); }
+}
+
+/* ── 탈퇴 확인 버튼 ── */
+.delete-btn-confirm {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    background-color: #ef4444 !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 7px 20px !important;
+    transition: background-color 0.15s ease, transform 0.1s ease !important;
+
+    &:hover { background-color: #dc2626 !important; }
+    &:active {
+        transform: scale(0.96);
+        background-color: #b91c1c !important;
+    }
+}

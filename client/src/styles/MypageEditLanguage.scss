@@ -4,47 +4,101 @@
 .editLanguage-Container {
     @extend .editPassword-Container;
     overflow: auto;
+    justify-content: flex-start;
+    padding-top: 48px;
 
     .editLanguage-Form {
         @extend .editPassword-Form;
 
-        position: relative;
-        text-align: start;
-        .chooseSelectBoxDiv {
-            @include flex();
-            > select {
-                width: 80%;
-                height: 40px;
-                margin-top: 15px;
-            }
-            .chooseSelect-plus-minus-btn {
-                > img {
-                    position: relative;
-                    top: 10px;
-                    margin-left: 0.15em;
-                    width: 30px;
-                    height: 30px;
+        label {
+            font-family: $font-body;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* 언어 선택 행 (select + 버튼) */
+        .lang-select-row {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+
+            select {
+                flex: 1;
+                height: 44px;
+                font-family: $font-body;
+                font-size: 14px;
+                border: 1.5px solid #d4d4d4;
+                border-radius: 10px;
+                padding: 0 13px;
+                color: #1a1a1a;
+                cursor: pointer;
+                appearance: auto;
+                outline: none;
+                box-sizing: border-box;
+                transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+                &:focus {
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba(55, 175, 106, 0.12);
                 }
             }
         }
-        .chooseSelectBoxDiv2 {
-            @extend .chooseSelectBoxDiv;
-        }
-        .chooseSelectBoxDiv3 {
-            @extend .chooseSelectBoxDiv;
+
+        /* + 추가 버튼 */
+        .lang-add-btn {
+            flex-shrink: 0;
+            font-family: $font-body;
+            font-size: 12px;
+            font-weight: 600;
+            color: $primary-color;
+            background: white;
+            border: 1.5px solid $primary-color;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.15s ease, color 0.15s ease;
+
+            &:hover {
+                background-color: $primary-color;
+                color: white;
+            }
+            &:active { transform: scale(0.96); }
         }
 
-        .editlangErrorMsg {
+        /* 삭제 버튼 */
+        .lang-remove-btn {
+            flex-shrink: 0;
+            font-family: $font-body;
+            font-size: 12px;
+            font-weight: 600;
+            color: #ef4444;
+            background: white;
+            border: 1.5px solid #ef4444;
+            border-radius: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.15s ease, color 0.15s ease;
+
+            &:hover {
+                background-color: #ef4444;
+                color: white;
+            }
+            &:active { transform: scale(0.96); }
+        }
+
+        .edit-error-msg {
+            font-family: $font-body;
+            font-size: 12px;
+            color: #ef4444;
             text-align: center;
-            margin-top: 25px;
+            padding: 4px 0;
         }
     }
-}
-
-.showMeTheSelect {
-    display: block;
-}
-
-.hideMeTheSelect {
-    display: none;
 }

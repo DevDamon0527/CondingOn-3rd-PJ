@@ -1,4 +1,5 @@
 @import './Common.scss';
+
 .myPageOption-C-Header {
     display: flex;
     align-items: center;
@@ -70,7 +71,9 @@
         }
     }
 }
+
 @import './MypageHeader.scss';
+
 .myPageOption-container {
     width: $all-width;
     max-width: 40em;
@@ -81,10 +84,12 @@
     border-right: 1px solid rgba(0, 0, 0, 0.05);
 
     .settingProfile {
-        height: 56px;
         padding: 0 16px;
         margin: 16px 0;
-        @include flex();
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
 
         .imageC {
             position: relative;
@@ -105,22 +110,16 @@
         }
 
         .contentC {
-            margin-left: 10px;
-            width: 100px;
             .nameInfo {
-                @include flex-center();
-                margin-bottom: 5px;
+                margin-bottom: 4px;
                 font-weight: bold;
+                font-size: 14px;
             }
             .countryInfo {
                 font-weight: 500;
-                font-size: 10px;
-                @include flex-around();
+                font-size: 11px;
+                color: $sub-color;
             }
-        }
-
-        .editImage {
-            margin-left: auto;
         }
     }
 
@@ -131,7 +130,90 @@
     }
 }
 
-// 공통으로 적용 시킬 부분
+/* ── 프로필 수정 버튼 (editImage 대체) ── */
+.edit-profile-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-family: $font-body;
+    font-size: 13px;
+    font-weight: 600;
+    color: $primary-color;
+    background: white;
+    border: 1.5px solid $primary-color;
+    border-radius: 20px;
+    padding: 5px 14px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background-color: $primary-color;
+        color: white;
+    }
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+/* ── 수정 버튼 (비밀번호, 학습언어 등) ── */
+.option-edit-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-family: $font-body;
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-color;
+    background: white;
+    border: 1.5px solid $primary-color;
+    border-radius: 20px;
+    padding: 3px 10px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background-color: $primary-color;
+        color: white;
+    }
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+/* ── 탈퇴 버튼 ── */
+.option-delete-btn {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-family: $font-body;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ef4444;
+    background: white;
+    border: 1.5px solid #ef4444;
+    border-radius: 20px;
+    padding: 3px 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background-color: #ef4444;
+        color: white;
+    }
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+/* ── 공통 섹션 헤더 ── */
 .settingDetail-Header {
     margin-top: 24px;
     height: 32px;
@@ -146,6 +228,7 @@
     }
 }
 
+/* ── 섹션 내용 ── */
 .settingDetail-Content {
     margin-top: 16px;
     padding: 0 16px;
@@ -155,26 +238,31 @@
 
     .settingDetail-Content-items {
         display: flex;
-        flex-wrap: wrap;
-        height: 24px;
-        margin-top: 16px;
+        flex-wrap: nowrap;
+        align-items: center;
+        min-height: 36px;
+        margin-top: 12px;
 
-        .rightPointImgDiv {
-            height: 24px;
-        }
         &:first-child {
-            margin-top: 0px;
+            margin-top: 0;
         }
 
         .result-Content-items {
             margin-left: auto;
-        }
-        .userdelete-div {
-            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            flex-shrink: 0;
+            margin-right: 8px;
         }
     }
 }
 
+/* 학습언어 행에서 수정 버튼은 바로 값 옆에 붙음 */
+.settingDetail-Content-items .result-Content-items + .option-edit-btn {
+    margin-left: 0;
+}
+
 .withdrawal {
-    color: red;
+    color: #ef4444;
+    font-weight: 600;
 }

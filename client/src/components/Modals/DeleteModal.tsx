@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { Button, Modal } from 'react-bootstrap';
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { useCookies } from 'react-cookie';
+import '../../styles/DeleteModal.scss';
 
 function DeleteModal({ show, setShow, navigate }: any) {
     const [cookies, setCookies, removeCookies] = useCookies(['id']);
+
     const handleClose = () => {
         setShow({ show: false });
         removeCookies('id');
@@ -27,34 +29,33 @@ function DeleteModal({ show, setShow, navigate }: any) {
             console.log(err);
         }
     };
+
     return (
         <>
-            {/* 변경 완료 되었을 시에 모달! */}
-            <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header>
-                    <Modal.Title style={{ color: 'red', fontWeight: 'bold' }}>
-                        경고!
+            <Modal show={show} onHide={handleCancle} centered dialogClassName="delete-modal-dialog">
+                <Modal.Header closeButton className="delete-modal-header">
+                    <Modal.Title className="delete-modal-title">
+                        회원 탈퇴
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{ fontWeight: 'bold' }}>
-                    정말로 계정을 삭제하시겠습니까?
+                <Modal.Body className="delete-modal-body">
+                    <p className="delete-modal-text">정말로 계정을 삭제하시겠습니까?</p>
+                    <p className="delete-modal-subtext">탈퇴 시 모든 데이터가 삭제되며 복구할 수 없습니다.</p>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer className="delete-modal-footer">
                     <Button
-                        onClick={() => {
-                            handleCancle();
-                        }}
+                        className="delete-btn-cancel"
+                        variant="secondary"
+                        onClick={handleCancle}
                     >
                         취소
                     </Button>
                     <Button
-                        style={{ backgroundColor: 'red', color: 'black' }}
+                        className="delete-btn-confirm"
                         variant="secondary"
-                        onClick={() => {
-                            handleClose();
-                        }}
+                        onClick={handleClose}
                     >
-                        확인
+                        탈퇴하기
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -26,7 +26,7 @@ export const getmyPage = async (
 
     if (!userid || userid == '' || userid === null) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -51,7 +51,7 @@ export const getmyPage = async (
     if (!userDataObj) {
         return res
             .status(500)
-            .json({ msg: 'An Error occurred', isError: true });
+            .json({ msg: '오류가 발생했습니다.', isError: true });
     }
     try {
         learningLangObjArr = await Lang.findAll({
@@ -65,7 +65,7 @@ export const getmyPage = async (
     if (!learningLangObjArr) {
         return res
             .status(500)
-            .json({ msg: 'An Error occurred', isError: true });
+            .json({ msg: '오류가 발생했습니다.', isError: true });
     }
 
     let learningLang: Array<string> = [];
@@ -145,7 +145,7 @@ export const changeUserPassword = async (
 
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -163,21 +163,21 @@ export const changeUserPassword = async (
     const result = bcrypt.compareSync(currentPassword, userPassword.password);
     if (!result) {
         return res.json({
-            msg: 'Existing password is incorrect.',
+            msg: '현재 비밀번호가 올바르지 않습니다.',
             isError: true,
         });
     }
 
     if (newPassword.trim().length < 6 || !newPassword) {
         return res.json({
-            msg: 'Password should be at least 6 characters long.',
+            msg: '비밀번호는 6자 이상이어야 합니다.',
             isError: true,
         });
     }
 
     if (!(newPassword === confirmPassword)) {
         return res.json({
-            msg: `There's a difference between new Password and confirm Password`,
+            msg: '새 비밀번호와 확인 비밀번호가 일치하지 않습니다.',
             isError: true,
         });
     }
@@ -191,7 +191,7 @@ export const changeUserPassword = async (
 
     if (isSame) {
         return res.json({
-            msg: 'Existing password and New password are same.',
+            msg: '현재 비밀번호와 새 비밀번호가 동일합니다.',
             isError: true,
         });
     }
@@ -212,12 +212,12 @@ export const changeUserPassword = async (
             }
         );
         return res.json({
-            msg: 'Password change completed.',
+            msg: '비밀번호가 변경되었습니다.',
             isError: false,
         });
     } catch (err) {
         return res.json({
-            msg: 'An Erorr Occurred. Please try Later.',
+            msg: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             isError: true,
         });
     }
@@ -234,7 +234,7 @@ export const changeUserLang = async (
 
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -257,12 +257,12 @@ export const changeUserLang = async (
             next(err);
         }
         res.json({
-            msg: 'Learning Languages change completed.',
+            msg: '학습 언어가 변경되었습니다.',
             isError: false,
         });
     } else {
         res.json({
-            msg: 'An Erorr Occurred. Please try Later.',
+            msg: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             isError: true,
         });
     }
@@ -279,7 +279,7 @@ export const changeUserName = async (
 
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -289,7 +289,7 @@ export const changeUserName = async (
         res.json({ msg: 'name change completed.', isError: false });
     } catch (err) {
         res.json({
-            msg: 'An Erorr Occurred. Please try Later.',
+            msg: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             isError: true,
         });
     }
@@ -305,7 +305,7 @@ export const deleteUser = async (
 
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -323,7 +323,7 @@ export const deleteUser = async (
         });
     } catch (err) {
         res.json({
-            msg: 'An Erorr Occurred. Please try Later.',
+            msg: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             isError: true,
         });
     }
@@ -339,7 +339,7 @@ export const editIntroduction = async (
 
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -352,7 +352,7 @@ export const editIntroduction = async (
         res.json({ msg: 'introduction change completed.', isError: false });
     } catch (err) {
         res.json({
-            msg: 'An Erorr Occurred. Please try Later.',
+            msg: '오류가 발생했습니다. 잠시 후 다시 시도해주세요.',
             isError: true,
         });
     }
@@ -379,7 +379,7 @@ export const multerMypage = async (
     const userid = req.session.userid;
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
@@ -408,7 +408,7 @@ export const getRevisedLists = async (
     const chats: string[] = [];
     if (!userid || userid.length < 4) {
         return res.status(401).json({
-            msg: 'Please Login First!',
+            msg: '로그인이 필요합니다.',
             isError: true,
         });
     }
