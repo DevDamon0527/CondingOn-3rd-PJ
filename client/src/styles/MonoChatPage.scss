@@ -56,11 +56,22 @@
         }
     }
 
-    .change-language:hover {
-        border-color: #555;
-        background-color: rgba(0, 0, 0, 0.04);
+    .change-language:hover:not(.active) {
+        border-color: #37af6a;
+        background-color: rgba(55, 175, 106, 0.06);
         transform: translateY(-1px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 6px rgba(55, 175, 106, 0.12);
+    }
+
+    .change-language.active {
+        background-color: #37af6a;
+        border-color: #37af6a;
+        color: white;
+        box-shadow: 0 2px 6px rgba(55, 175, 106, 0.3);
+
+        .language-text {
+            color: white;
+        }
     }
 }
 

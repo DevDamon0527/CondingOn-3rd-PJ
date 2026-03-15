@@ -60,6 +60,7 @@ function MonoChatList({ selectedLanguage }: MonoChatListProps) {
             {!(monoRooms === undefined) &&
                 monoRooms.map((elem: any) => {
                     if (
+                        selectedLanguage === 'ALL' ||
                         languageText(elem.restrictedLang) === selectedLanguage
                     ) {
                         return (

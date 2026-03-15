@@ -1,10 +1,163 @@
 @import './Common.scss';
 
-.form-control {
-    appearance: auto;
+/* ── 뷰포트 기준 정중앙 포지셔닝 ── */
+.mono-chat-modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: calc(100% - 32px) !important;
+    max-width: 420px !important;
+    min-height: auto !important;
+
+    /* MypageHeader.scss 전역 width: 300px 오버라이드 */
+    .modal-content {
+        width: 100% !important;
+        border: none !important;
+        border-radius: 16px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14) !important;
+        overflow: hidden;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* MypageHeader.scss 전역 margin-bottom: 16px 오버라이드 */
+    .modal-header {
+        margin-bottom: 0 !important;
+        padding: 18px 22px 14px !important;
+        border-bottom: 1px solid #eeeeee !important;
+        background-color: white;
+
+        .btn-close {
+            opacity: 0.4;
+            transition: opacity 0.15s ease;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    /* MypageHeader.scss 전역 max-height: 300px 오버라이드 */
+    .modal-body {
+        max-height: none !important;
+        overflow-y: visible !important;
+        padding: 22px 22px 8px !important;
+        background-color: white;
+    }
+
+    .modal-footer {
+        padding: 14px 22px 18px !important;
+        border-top: 1px solid #eeeeee !important;
+        background-color: white;
+        gap: 8px;
+    }
 }
 
-.form-label {
-    font-weight: bold;
-    font-size: large;
+/* ── 모달 타이틀 ── */
+.mono-modal-title {
+    font-family: $font-title !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+}
+
+/* ── 폼 라벨 ── */
+.mono-form-label {
+    font-family: $font-body !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #444 !important;
+    margin-bottom: 6px !important;
+}
+
+/* ── 텍스트 입력 ── */
+.mono-form-input {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    border: 1.5px solid #d4d4d4 !important;
+    border-radius: 10px !important;
+    padding: 9px 13px !important;
+    color: #1a1a1a !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+
+    &::placeholder {
+        color: #b0b0b0 !important;
+        font-size: 13px !important;
+    }
+
+    &:focus {
+        border-color: #37af6a !important;
+        box-shadow: 0 0 0 3px rgba(55, 175, 106, 0.12) !important;
+        outline: none !important;
+    }
+}
+
+/* ── 언어 선택 ── */
+.mono-form-select {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    border: 1.5px solid #d4d4d4 !important;
+    border-radius: 10px !important;
+    padding: 9px 13px !important;
+    color: #1a1a1a !important;
+    cursor: pointer !important;
+    appearance: auto !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+
+    &:focus {
+        border-color: #37af6a !important;
+        box-shadow: 0 0 0 3px rgba(55, 175, 106, 0.12) !important;
+        outline: none !important;
+    }
+}
+
+/* ── 취소 버튼 ── */
+.mono-btn-cancel {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    background-color: #f2f2f2 !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 7px 20px !important;
+    transition: background-color 0.15s ease !important;
+
+    &:hover {
+        background-color: #e5e5e5 !important;
+        color: #333 !important;
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+}
+
+/* ── 만들기 버튼 ── */
+.mono-btn-create {
+    font-family: $font-body !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: white !important;
+    background-color: #37af6a !important;
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 7px 20px !important;
+    transition: background-color 0.15s ease, transform 0.1s ease !important;
+
+    &:hover:not(:disabled) {
+        background-color: #2e9d5e !important;
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.96);
+        background-color: #268c53 !important;
+    }
+
+    &:disabled {
+        background-color: #a8dfc0 !important;
+        cursor: not-allowed !important;
+        opacity: 1 !important;
+    }
 }

@@ -103,7 +103,7 @@ function LanguageComment(props: any) {
                         <div className="comment-date">
                             {getTimeObj(props.time).year}년{' '}
                             {getTimeObj(props.time).month}월{' '}
-                            {getTimeObj(props.time).day}일{' '}
+                            {getTimeObj(props.time).date}일{' '}
                             {getTimeObj(props.time).hour}시{' '}
                             {getTimeObj(props.time).minute}분
                         </div>

@@ -18,6 +18,9 @@ export function getCurrentData3(date: Date): string {
     const hour = date.getHours();
     const minute = date.getMinutes();
 
+    if (minute === 0) {
+        return `${hour}시`;
+    }
     return `${hour}시 ${minute}분`;
 }
 

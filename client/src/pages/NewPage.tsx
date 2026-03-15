@@ -181,7 +181,9 @@ const ChatRoomPage: React.FC = () => {
         ]);
         setNewMessage('');
     };
-    scrollToBottom();
+    useEffect(() => {
+        scrollToBottom();
+    }, [chatLog]);
 
     return (
         <>
