@@ -271,7 +271,7 @@ app.use(notFoundHandler);
 db.sequelize
     .sync({ force: false })
     .then(() => {
-        server.listen(process.env.SERVERPORT, () => {
+        server.listen(process.env.PORT || process.env.SERVERPORT, () => {
             console.log(`Server is running on ${process.env.SERVERURL}`);
         });
     })
