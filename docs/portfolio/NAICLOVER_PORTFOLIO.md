@@ -734,25 +734,45 @@ graph TD
 
 ---
 
-### TS-4. 시드 데이터 이미지 확장자 오류 — `.jpg.png` → `.jpg`
+### TS-4. Socket.IO 이벤트 리스너 누수 — `useEffect` 클린업 미처리
 
 **문제 상황**
-개발 환경에서 더미 게시글의 이미지가 로드되지 않는 문제 발생. 이미지 파일이 `server/public/posts/`에 존재하는데도 렌더링 실패.
-(git: `fa1cf7b` — `seed_chimac.jpg.png → seed_chimac.jpg` 등 6개 파일 rename)
+그룹 채팅방 생성 모달(`CreateMonoChatModal`)에서 방 생성 버튼을 여러 번 클릭하거나 모달을 반복 열고 닫으면, 방이 생성된 후 엉뚱한 roomNum으로 이동하거나 동일한 이벤트 핸들러가 중복 실행되는 증상이 나타남.
+(git: `452ba1b — CreateMonoChatModal socket 리스너 누수 수정`)
 
 **원인 분석**
-시드 이미지 파일이 `.jpg.png`라는 이중 확장자로 저장되어 있었음. Multer 설정이나 파일 저장 로직에서 이미 `.jpg` 확장자가 붙은 파일명에 `.png`를 추가로 붙인 것으로 추정.
-서버는 `path` 기준으로 파일을 서빙하는데 DB에 저장된 경로와 실제 파일명이 불일치.
+`socket.on('roomCreated', handleRoomCreated)` 호출이 컴포넌트 렌더 바디 최상위에 직접 작성되어 있었음.
+
+```tsx
+// 문제 코드 — 렌더 바디 최상위에 위치
+const handleRoomCreated = ({ roomNum }: { roomNum: string }) => {
+    window.location.href = `/chat/${roomNum}`;
+};
+socket.on('roomCreated', handleRoomCreated);
+```
+
+React에서 컴포넌트가 리렌더링될 때마다 `socket.on`이 재실행되어 동일 이벤트에 핸들러가 누적 등록됨. 또한 모달이 unmount될 때 리스너가 해제되지 않아 메모리 누수와 함께 이전 핸들러가 계속 살아 있는 상태가 됨.
 
 **해결 방법**
-`server/public/posts/` 내 시드 이미지 파일명을 올바른 단일 확장자(`.jpg`)로 rename.
-필요 시 seed.ts의 파일명 하드코딩도 함께 수정.
+`useEffect` 안으로 이동하고 cleanup 함수에서 `socket.off`로 명시적 해제:
+
+```tsx
+useEffect(() => {
+    const handleRoomCreated = ({ roomNum }: { roomNum: string }) => {
+        window.location.href = `/chat/${roomNum}`;
+    };
+    socket.on('roomCreated', handleRoomCreated);
+    return () => {
+        socket.off('roomCreated', handleRoomCreated);  // cleanup
+    };
+}, []);
+```
 
 **해결 후 결과**
-개발 환경 시드 데이터에서 이미지 정상 렌더링.
+모달 반복 open/close 후에도 `roomCreated` 핸들러가 단 한 번만 실행됨. 리스너 누수 제거.
 
 **배운 점**
-파일 업로드 로직에서 확장자 처리는 `path.extname()`으로 원본 파일의 확장자를 추출해 그대로 쓰는 방식이 안전함. 파일명과 DB 경로는 저장 시점에 일치 여부를 검증해야 함.
+Socket.IO 이벤트 등록은 반드시 `useEffect` 안에서 하고, 의존성 배열과 함께 cleanup을 쌍으로 작성해야 함. 렌더 바디 최상위에 side effect를 두면 렌더링 횟수만큼 누적된다는 사실을 직접 경험했고, 이후 모든 소켓 이벤트 등록 코드에 동일 패턴을 적용했음.
 
 ---
 
