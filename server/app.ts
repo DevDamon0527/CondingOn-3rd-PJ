@@ -264,6 +264,11 @@ app.get('/api/chatRooms/:roomId', (req: Request, res: Response) => {
     }
 });
 
+// React Router 클라이언트 라우팅 지원 (API 라우트 외 모든 경로에 index.html 반환)
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '/../client/build/index.html'));
+});
+
 // 에러처리 핸들러, 요청, 응답의 제일 아래가야함.
 app.use(handleErrors);
 app.use(notFoundHandler);
