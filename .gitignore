@@ -48,3 +48,6 @@ Thumbs.db
 # 서버 업로드 이미지 (런타임 생성 파일)
 server/public/posts/
 server/public/mypage/
+
+docs/
+LOCAL_SETUP.md
