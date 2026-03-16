@@ -113,12 +113,17 @@
 
 | 기술 | 용도 |
 |------|------|
-| AWS EC2 | 서버 호스팅 |
-| PM2 | Node.js 프로세스 관리 및 자동 재시작 |
-| NGINX | 리버스 프록시 (80포트 → 4000포트) |
+| Railway | 서버(Express) + MySQL DB 통합 호스팅. Git push 만으로 자동 빌드·배포 |
+| Cloudinary | 이미지 클라우드 스토리지. 게시글·프로필 이미지를 서버 로컬이 아닌 외부 CDN에 저장 |
+
+**배포 구조:**
+- 루트 `package.json`의 `build` / `start` 스크립트로 Railway 빌드 파이프라인 연결
+- 서버 포트는 Railway가 주입하는 환경변수(`process.env.PORT`)를 우선 사용
+- 이미지 업로드 시 `multer-storage-cloudinary`를 통해 Cloudinary에 직접 저장되고, DB에는 Cloudinary URL이 기록됨
+- 프론트엔드에서는 `getImageUrl()` 유틸로 Cloudinary URL과 로컬 경로를 모두 처리할 수 있도록 호환 레이어 추가 (배포 전환 시 기존 데이터 유지)
 
 > **면접에서 이렇게 설명 가능**
-> "React + TypeScript + SCSS를 프론트에, Express + Sequelize + MySQL을 백엔드에 사용했고, 실시간 채팅은 Socket.IO로 구현했습니다. 배포는 AWS EC2에 NGINX + PM2 조합입니다."
+> "초기에는 AWS EC2 + PM2 + NGINX로 배포했으나, 이후 Railway로 플랫폼을 전환하고 이미지 스토리지도 로컬 파일시스템에서 Cloudinary로 마이그레이션했습니다. 이미지 경로 처리를 클라이언트 유틸 함수로 추상화해 전환 전후 데이터가 모두 호환되도록 처리했습니다."
 
 ---
 
