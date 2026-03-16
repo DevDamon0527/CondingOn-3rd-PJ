@@ -58,6 +58,7 @@ function LoginPage() {
                             className="auth-input"
                             type="text"
                             placeholder="아이디를 입력하세요"
+                            defaultValue="test"
                             ref={idRef}
                         />
                     </div>
@@ -67,6 +68,7 @@ function LoginPage() {
                             className="auth-input"
                             type="password"
                             placeholder="비밀번호를 입력하세요"
+                            defaultValue="111111"
                             ref={passwordRef}
                         />
                     </div>

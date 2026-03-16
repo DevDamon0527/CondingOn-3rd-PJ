@@ -55,17 +55,22 @@
         .chat-detail2 {
             width: 100%;
             @include flex();
+            flex-wrap: nowrap;
+            min-width: 0;
             .chat-lastcontent {
-                max-height: 50px;
+                flex: 1;
+                min-width: 0;
                 overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             .chat-notCheck {
+                flex-shrink: 0;
                 margin-left: auto;
                 background-color: rgb(250, 69, 69);
                 text-align: center;
                 width: 25px;
                 height: 25px;
-                margin-left: auto;
                 border-radius: 50%;
                 color: white;
             }
