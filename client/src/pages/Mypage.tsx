@@ -87,24 +87,107 @@ function Mypage() {
 
     if (!userData) {
         return (
-            <div className="mypage-loading-screen">
-                <div className="mypage-loading-header">
-                    <div className="skeleton-circle mypage-loading-avatar" />
-                    <div className="mypage-loading-info">
-                        <div className="skeleton-line mypage-loading-name" />
-                        <div className="skeleton-line mypage-loading-sub" />
-                        <div className="skeleton-line mypage-loading-sub2" />
+            <>
+                {/* 실제 logoC와 동일한 fixed top bar */}
+                <div className="logoC">
+                    <span className="mypage-header-title">마이페이지</span>
+                    <Link to={'/mypage/option'}>
+                        <div className="gaerOption">
+                            <img src="images/Gear.png" alt="" />
+                        </div>
+                    </Link>
+                </div>
+                {/* 실제 mypage-container 구조 그대로 재사용 */}
+                <div className="mypage-container mypage-skeleton">
+                    {/* MypageHeader: followC 3열 구조 */}
+                    <div className="mypageHeaderC">
+                        <div className="followC">
+                            {/* 팔로워 — aDiv 구조 그대로 */}
+                            <div className="aDiv">
+                                <div>팔로워</div>
+                                <div>
+                                    <img src="/images/Divider.png" alt="" />
+                                </div>
+                                <div>
+                                    <div className="skeleton-line sk-count-num" />
+                                </div>
+                            </div>
+                            {/* 중앙: 프로필 이미지 + 이름/국가/언어 */}
+                            <div className="bDiv">
+                                <div className="imageC">
+                                    <div className="skeleton-circle sk-profile-circle" />
+                                </div>
+                                <div className="contentC">
+                                    <div className="nameInfo">
+                                        <div className="skeleton-line sk-name-line" />
+                                    </div>
+                                    <div className="countryInfo">
+                                        <div className="skeleton-line sk-nation-line" />
+                                    </div>
+                                    <div className="languageInfo">
+                                        <div className="languageDiv">
+                                            <div className="skeleton-line sk-lang-short" />
+                                        </div>
+                                        <div className="arrowImage">
+                                            <img src="images/Arrow.png" alt="" />
+                                        </div>
+                                        <div className="languageDiv">
+                                            <div className="skeleton-line sk-lang-short" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* 팔로잉 — cDiv 구조 그대로 */}
+                            <div className="cDiv">
+                                <div>팔로잉</div>
+                                <div>
+                                    <img src="/images/Divider.png" alt="" />
+                                </div>
+                                <div>
+                                    <div className="skeleton-line sk-count-num" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* 탭 — 정적 텍스트 그대로 표시 */}
+                    <div className="clickDiv">
+                        <div className="profileClick active changed">프로필</div>
+                        <div className="postClick">게시물</div>
+                    </div>
+                    {/* mypageProfile-C: 섹션 타이틀은 정적이므로 실제 텍스트 유지 */}
+                    <div className="mypageProfile-C">
+                        <div className="introduce-C">
+                            <div className="introduce-C-Header">
+                                <div className="header-title">자기 소개</div>
+                                <div className="modify-C">
+                                    <div className="skeleton-line sk-modify-btn" />
+                                </div>
+                            </div>
+                            <div className="textarea-C">
+                                <div className="skeleton-line sk-textarea-block" />
+                            </div>
+                        </div>
+                        <div className="nativLang-C">
+                            <div className="nativLang-C-Header">
+                                <div className="header-title">모국어</div>
+                            </div>
+                            <div className="native-result-c">
+                                <div className="skeleton-line sk-badge-pill" />
+                            </div>
+                        </div>
+                        <div className="learnLang-C">
+                            <div className="learnLang-C-Header">
+                                <div className="header-title">학습 언어</div>
+                            </div>
+                            <div className="learn-result-c">
+                                <div className="skeleton-line sk-badge-pill" />
+                                <div className="skeleton-line sk-badge-pill" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="mypage-loading-stats">
-                    {[1, 2].map((i) => (
-                        <div key={i} className="mypage-loading-stat-item">
-                            <div className="skeleton-line mypage-loading-stat-num" />
-                            <div className="skeleton-line mypage-loading-stat-label" />
-                        </div>
-                    ))}
-                </div>
-            </div>
+                <Footer />
+            </>
         );
     }
 

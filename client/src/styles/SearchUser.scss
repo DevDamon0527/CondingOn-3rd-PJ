@@ -31,6 +31,56 @@
     }
 }
 
+// SearchUser 로딩 skeleton (mypage-loading-screen 구조 그대로 유지)
+.mypage-loading-screen {
+    width: 100%;
+    max-width: 40em;
+    margin: 3em auto 0;
+    padding: 20px 16px;
+    background: white;
+
+    .mypage-loading-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 0;
+
+        .mypage-loading-avatar {
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+        }
+
+        .mypage-loading-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .mypage-loading-name { width: 45%; height: 16px; }
+            .mypage-loading-sub  { width: 65%; height: 13px; }
+            .mypage-loading-sub2 { width: 50%; height: 13px; }
+        }
+    }
+
+    .mypage-loading-stats {
+        display: flex;
+        gap: 24px;
+        padding: 16px 0;
+        border-top: 1px solid #f0f0f0;
+
+        .mypage-loading-stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+
+            .mypage-loading-stat-num   { width: 40px; height: 18px; }
+            .mypage-loading-stat-label { width: 50px; height: 12px; }
+        }
+    }
+}
+
 .userpage-container {
     width: 100%;
     max-width: 40em;

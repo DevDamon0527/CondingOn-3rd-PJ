@@ -32,70 +32,59 @@
         align-items: center;
     }
 }
-.mypage-loading-screen {
-    width: 100%;
-    max-width: 40em;
-    margin: 3em auto 0;
-    padding: 20px 16px;
-    background: white;
-
-    .mypage-loading-header {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 16px 0;
-
-        .mypage-loading-avatar {
-            width: 72px;
-            height: 72px;
-            flex-shrink: 0;
-        }
-
-        .mypage-loading-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-
-            .mypage-loading-name {
-                width: 45%;
-                height: 16px;
-            }
-
-            .mypage-loading-sub {
-                width: 65%;
-                height: 13px;
-            }
-
-            .mypage-loading-sub2 {
-                width: 50%;
-                height: 13px;
-            }
-        }
+// mypage skeleton: 실제 컴포넌트 CSS 클래스(mypageHeaderC, followC 등)를 그대로 재사용하므로
+// 여기서는 데이터 자리 placeholder 크기만 오버라이드
+.mypage-skeleton {
+    // 프로필 원형 이미지 자리 — 실제 profile-image와 동일한 56px
+    .sk-profile-circle {
+        width: 56px;
+        height: 56px;
     }
 
-    .mypage-loading-stats {
-        display: flex;
-        gap: 24px;
-        padding: 16px 0;
-        border-top: 1px solid #f0f0f0;
+    // 팔로워/팔로잉 숫자 자리
+    .sk-count-num {
+        width: 28px;
+        height: 14px;
+    }
 
-        .mypage-loading-stat-item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: center;
+    // bDiv > contentC 내부 이름/국가/언어 라인
+    // contentC는 약 40px 너비(bDiv 6em - imageC 56px)이므로 작게 설정
+    .sk-name-line {
+        width: 36px;
+        height: 13px;
+    }
 
-            .mypage-loading-stat-num {
-                width: 40px;
-                height: 18px;
-            }
+    .sk-nation-line {
+        width: 28px;
+        height: 11px;
+    }
 
-            .mypage-loading-stat-label {
-                width: 50px;
-                height: 12px;
-            }
-        }
+    // languageDiv 안 언어 코드 자리 (e.g. "KR", "EN")
+    .sk-lang-short {
+        width: 22px;
+        height: 13px;
+    }
+
+    // 수정 버튼 자리 — 실제 modify-btn의 border-radius: 20px 반영
+    .sk-modify-btn {
+        width: 52px;
+        height: 24px;
+        border-radius: 20px;
+    }
+
+    // 자기소개 textarea 자리 — 실제 introduce-textarea height: 91px, border-radius: 8px
+    .sk-textarea-block {
+        width: 100%;
+        height: 91px;
+        border-radius: 8px;
+    }
+
+    // 언어 뱃지 자리 — 실제 nativeResultDiv/learnResultDiv의 pill 형태 반영
+    .sk-badge-pill {
+        width: 60px;
+        height: 32px;
+        border-radius: 20px;
+        margin-right: 12px;
     }
 }
 
