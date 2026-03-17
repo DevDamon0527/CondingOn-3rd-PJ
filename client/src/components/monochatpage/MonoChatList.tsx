@@ -13,9 +13,11 @@ interface MonoChatListProps {
 }
 function MonoChatList({ selectedLanguage }: MonoChatListProps) {
     const [monoRooms, setMonoRooms] = useState<any>();
+    const [isLoading, setIsLoading] = useState(true);
 
     const { errorHandler } = useErrorHandler();
     const fetchMonoRooms = async () => {
+        setIsLoading(true);
         try {
             const res = await axios({
                 url: `${process.env.REACT_APP_SERVERURL}/fetch/monorooms`,
@@ -25,6 +27,8 @@ function MonoChatList({ selectedLanguage }: MonoChatListProps) {
             setMonoRooms(res.data.monoRooms);
         } catch (err: any) {
             errorHandler(err.response.status);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -56,10 +60,40 @@ function MonoChatList({ selectedLanguage }: MonoChatListProps) {
             fetchMonoRooms();
         });
     }, []);
+    if (isLoading) {
+        return (
+            <>
+                {[1, 2, 3].map((i) => (
+                    <div key={i} className="monochat-skeleton-card">
+                        <div className="monochat-skeleton-header">
+                            <div className="skeleton-line monochat-skeleton-lang" />
+                            <div className="skeleton-line monochat-skeleton-title" />
+                        </div>
+                        <div className="monochat-skeleton-footer">
+                            <div className="skeleton-circle monochat-skeleton-avatar" />
+                            <div className="monochat-skeleton-meta">
+                                <div className="skeleton-line monochat-skeleton-name" />
+                                <div className="skeleton-line monochat-skeleton-count" />
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </>
+        );
+    }
+
+    if (!monoRooms || monoRooms.length === 0) {
+        return (
+            <div className="monochat-empty-state">
+                <div className="monochat-empty-icon">🗨️</div>
+                <div>참여 가능한 채팅방이 없습니다</div>
+            </div>
+        );
+    }
+
     return (
         <>
-            {!(monoRooms === undefined) &&
-                monoRooms.map((elem: any) => {
+            {monoRooms.map((elem: any) => {
                     if (
                         selectedLanguage === 'ALL' ||
                         languageText(elem.restrictedLang) === selectedLanguage

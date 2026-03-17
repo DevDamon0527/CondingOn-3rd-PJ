@@ -59,6 +59,37 @@ $--green--500: rgb(0, 48, 0);
     object-fit: cover;
 }
 
+// --- Skeleton Loading ---
+@keyframes skeleton-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@mixin skeleton-base() {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.4s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-line {
+    @include skeleton-base();
+    height: 14px;
+    border-radius: 4px;
+}
+
+.skeleton-circle {
+    @include skeleton-base();
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+// 리스트형 로딩 컨테이너
+.skeleton-loading-list {
+    width: 100%;
+    padding: 0;
+}
+
 @mixin edit-ConfirmBtn() {
     display: block;
     width: 100%;

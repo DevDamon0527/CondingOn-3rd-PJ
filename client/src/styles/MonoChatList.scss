@@ -1,4 +1,78 @@
 @import './Common.scss';
+.monochat-skeleton-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 32px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .monochat-skeleton-header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .monochat-skeleton-lang {
+            width: 30px;
+            height: 13px;
+            margin-left: auto;
+        }
+
+        .monochat-skeleton-title {
+            width: 60%;
+            height: 18px;
+        }
+    }
+
+    .monochat-skeleton-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .monochat-skeleton-avatar {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .monochat-skeleton-meta {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            .monochat-skeleton-name {
+                width: 40%;
+                height: 12px;
+            }
+
+            .monochat-skeleton-count {
+                width: 55%;
+                height: 12px;
+                margin-left: auto;
+            }
+        }
+    }
+}
+
+.monochat-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+    color: #aaa;
+    font-size: 14px;
+    gap: 8px;
+    font-family: $font-body;
+
+    .monochat-empty-icon {
+        font-size: 32px;
+        margin-bottom: 4px;
+    }
+}
+
 .allchatroom-container {
     width: 100%;
     min-width: 300px;

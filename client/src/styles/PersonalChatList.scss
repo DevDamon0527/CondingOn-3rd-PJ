@@ -77,6 +77,55 @@
         }
     }
 }
+.chat-skeleton-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-bottom: 1px solid lightgrey;
+    height: 100px;
+
+    .chat-skeleton-avatar {
+        width: 4em;
+        height: 4em;
+        flex-shrink: 0;
+    }
+
+    .chat-skeleton-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .chat-skeleton-name {
+            width: 45%;
+            height: 14px;
+        }
+
+        .chat-skeleton-content {
+            width: 75%;
+            height: 12px;
+        }
+    }
+}
+
+.chat-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+    color: #aaa;
+    font-size: 14px;
+    gap: 8px;
+    font-family: $font-body;
+
+    .chat-empty-icon {
+        font-size: 32px;
+        margin-bottom: 4px;
+    }
+}
+
 .hide {
     display: none;
 }

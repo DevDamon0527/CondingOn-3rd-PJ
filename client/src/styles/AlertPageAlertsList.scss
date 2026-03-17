@@ -9,6 +9,43 @@
     }
 }
 
+@import './Common.scss';
+
+.alertslist-skeleton {
+    padding: 8px 0;
+
+    .alertslist-skeleton-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid #f0f0f0;
+
+        .alertslist-skeleton-avatar {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .alertslist-skeleton-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .alertslist-skeleton-title {
+                width: 55%;
+                height: 13px;
+            }
+
+            .alertslist-skeleton-sub {
+                width: 80%;
+                height: 12px;
+            }
+        }
+    }
+}
+
 .alertslist-empty {
     display: flex;
     flex-direction: column;

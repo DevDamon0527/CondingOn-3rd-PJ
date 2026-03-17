@@ -9,14 +9,20 @@ const socket = io(`${process.env.REACT_APP_SERVERURL}`);
 
 function PersonalChatList() {
     const [personalRooms, setPersonalRooms] = useState<any>();
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchPersonalRooms = async () => {
-        const res = await axios({
-            url: `${process.env.REACT_APP_SERVERURL}/fetch/personalrooms`,
-            method: 'get',
-            withCredentials: true,
-        });
-        setPersonalRooms(res.data.personalRooms);
+        setIsLoading(true);
+        try {
+            const res = await axios({
+                url: `${process.env.REACT_APP_SERVERURL}/fetch/personalrooms`,
+                method: 'get',
+                withCredentials: true,
+            });
+            setPersonalRooms(res.data.personalRooms);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -27,10 +33,34 @@ function PersonalChatList() {
         });
     }, []);
 
+    if (isLoading) {
+        return (
+            <>
+                {[1, 2, 3].map((i) => (
+                    <div key={i} className="chat-skeleton-item">
+                        <div className="skeleton-circle chat-skeleton-avatar" />
+                        <div className="chat-skeleton-body">
+                            <div className="skeleton-line chat-skeleton-name" />
+                            <div className="skeleton-line chat-skeleton-content" />
+                        </div>
+                    </div>
+                ))}
+            </>
+        );
+    }
+
+    if (!personalRooms || personalRooms.length === 0) {
+        return (
+            <div className="chat-empty-state">
+                <div className="chat-empty-icon">💬</div>
+                <div>아직 대화 중인 채팅이 없습니다</div>
+            </div>
+        );
+    }
+
     return (
         <>
-            {!(personalRooms === undefined) &&
-                personalRooms.map((elem: any) => {
+            {personalRooms.map((elem: any) => {
                     if (!elem.realRoomName?.[0]) return null;
                     return (
                         <div key={elem.roomNum}>

@@ -16,6 +16,56 @@
     align-items: center;
 }
 
+@import './Common.scss';
+
+.errorlog-skeleton {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .errorlog-skeleton-item {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+
+        .errorlog-skeleton-before {
+            width: 80%;
+            height: 14px;
+        }
+
+        .errorlog-skeleton-arrow {
+            width: 20px;
+            height: 14px;
+        }
+
+        .errorlog-skeleton-after {
+            width: 70%;
+            height: 14px;
+        }
+    }
+}
+
+.errorlog-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    color: #aaa;
+    font-size: 15px;
+    gap: 8px;
+
+    .errorlog-empty-icon {
+        font-size: 36px;
+        margin-bottom: 4px;
+    }
+}
+
 .beforeafters-container {
     width: 100%;
     height: calc(100vh - 8em);

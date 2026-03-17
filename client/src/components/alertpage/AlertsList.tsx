@@ -9,8 +9,10 @@ import '../../styles/AlertPageAlertsList.scss';
 function AlertsList(props: any) {
     const { userid } = props;
     const [alarmList, setAlarmList] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const getAlarms = async () => {
+        setIsLoading(true);
         try {
             const res = await axios({
                 method: 'get',
@@ -23,6 +25,8 @@ function AlertsList(props: any) {
             setAlarmList(res.data.list ?? []);
         } catch (error) {
             alert(`잘못된 접근입니다. Error: ${error}`);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -46,7 +50,19 @@ function AlertsList(props: any) {
     return (
         <>
             <div className="alertslist-container">
-                {alarmList.length === 0 ? (
+                {isLoading ? (
+                    <div className="alertslist-skeleton">
+                        {[1, 2, 3, 4].map((i) => (
+                            <div key={i} className="alertslist-skeleton-item">
+                                <div className="skeleton-circle alertslist-skeleton-avatar" />
+                                <div className="alertslist-skeleton-body">
+                                    <div className="skeleton-line alertslist-skeleton-title" />
+                                    <div className="skeleton-line alertslist-skeleton-sub" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : alarmList.length === 0 ? (
                     <div className="alertslist-empty">
                         <div className="alertslist-empty-icon">🔔</div>
                         <div>새로운 알림이 없습니다</div>

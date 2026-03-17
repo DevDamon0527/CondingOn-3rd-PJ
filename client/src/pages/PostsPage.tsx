@@ -22,6 +22,9 @@ function PostsPage() {
     const [searchCulturePosts, setSearchCulturePosts] = useState([]);
     const [searchLanguagePosts, setSearchLanguagePosts] = useState([]);
     const [showSearchResults, setShowSearchResults] = useState(false);
+    const [isLoadingLang, setIsLoadingLang] = useState(true);
+    const [isLoadingCul, setIsLoadingCul] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -40,6 +43,7 @@ function PostsPage() {
     };
 
     const getSearchResults = async () => {
+        setIsSearching(true);
         try {
             const res = await axios({
                 method: 'get',
@@ -52,15 +56,16 @@ function PostsPage() {
             });
             setSearchCulturePosts(res.data.SearchPosts.c);
             setSearchLanguagePosts(res.data.SearchPosts.l);
-
-            //검색결과가 있을 때만 검색 결과를 보여주도록
             setShowSearchResults(true);
         } catch (error) {
             console.log('error', error);
+        } finally {
+            setIsSearching(false);
         }
     };
 
     const getCulturePosts = async () => {
+        setIsLoadingCul(true);
         try {
             const res = await axios({
                 method: 'get',
@@ -76,10 +81,13 @@ function PostsPage() {
                 errorHandler(error.response?.status);
             }
             console.log('error', error);
+        } finally {
+            setIsLoadingCul(false);
         }
     };
 
     const getLanguagePosts = async () => {
+        setIsLoadingLang(true);
         try {
             const res = await axios({
                 method: 'get',
@@ -95,6 +103,8 @@ function PostsPage() {
                 errorHandler(error.response?.status);
             }
             console.log('error', error);
+        } finally {
+            setIsLoadingLang(false);
         }
     };
 
@@ -175,7 +185,20 @@ function PostsPage() {
 
                     {showLanguagePosts && !showSearchResults && (
                         <div className="language-posts-container">
-                            {languagePosts?.length > 0 ? (
+                            {isLoadingLang ? (
+                                <div className="posts-skeleton-list">
+                                    {[1, 2, 3].map((i) => (
+                                        <div key={i} className="posts-skeleton-card">
+                                            <div className="posts-skeleton-avatar skeleton-circle" />
+                                            <div className="posts-skeleton-body">
+                                                <div className="skeleton-line posts-skeleton-name" />
+                                                <div className="skeleton-line posts-skeleton-content" />
+                                                <div className="skeleton-line posts-skeleton-content-short" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : languagePosts?.length > 0 ? (
                                 languagePosts
                                     .slice(0)
                                     .map((languagePostData: any) => (
@@ -211,14 +234,27 @@ function PostsPage() {
                                         />
                                     ))
                             ) : (
-                                <p>언어 게시물이 없습니다.</p>
+                                <p className="posts-empty-text">언어 게시물이 없습니다.</p>
                             )}
                         </div>
                     )}
 
                     {showCulturePosts && !showSearchResults && (
                         <div className="culture-posts-container">
-                            {culturePosts?.length > 0 ? (
+                            {isLoadingCul ? (
+                                <div className="posts-skeleton-list">
+                                    {[1, 2, 3].map((i) => (
+                                        <div key={i} className="posts-skeleton-card">
+                                            <div className="posts-skeleton-avatar skeleton-circle" />
+                                            <div className="posts-skeleton-body">
+                                                <div className="skeleton-line posts-skeleton-name" />
+                                                <div className="skeleton-line posts-skeleton-content" />
+                                                <div className="skeleton-line posts-skeleton-content-short" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : culturePosts?.length > 0 ? (
                                 culturePosts
                                     .slice(0)
                                     .map((culturePostData: any) => (
@@ -256,13 +292,27 @@ function PostsPage() {
                                         />
                                     ))
                             ) : (
-                                <p>문화 게시물이 없습니다.</p>
+                                <p className="posts-empty-text">문화 게시물이 없습니다.</p>
                             )}
                         </div>
                     )}
 
                     {showSearchResults && (
                         <div className="search-results-container">
+                            {isSearching ? (
+                                <div className="posts-skeleton-list">
+                                    {[1, 2, 3].map((i) => (
+                                        <div key={i} className="posts-skeleton-card">
+                                            <div className="posts-skeleton-avatar skeleton-circle" />
+                                            <div className="posts-skeleton-body">
+                                                <div className="skeleton-line posts-skeleton-name" />
+                                                <div className="skeleton-line posts-skeleton-content" />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                            <>
                             {showLanguagePosts && (
                                 <div className="language-posts-container">
                                     {searchLanguagePosts.length > 0 ? (
@@ -375,9 +425,11 @@ function PostsPage() {
                                                 />
                                             ))
                                     ) : (
-                                        <p>검색된 문화 게시물이 없습니다.</p>
+                                        <p className="posts-empty-text">검색된 문화 게시물이 없습니다.</p>
                                     )}
                                 </div>
+                            )}
+                            </>
                             )}
                         </div>
                     )}

@@ -97,7 +97,26 @@ function SearchUser() {
     }, []);
 
     if (!userData) {
-        return null; // 또는 로딩 스피너 등을 보여줄 수 있음.
+        return (
+            <div className="mypage-loading-screen">
+                <div className="mypage-loading-header">
+                    <div className="skeleton-circle mypage-loading-avatar" />
+                    <div className="mypage-loading-info">
+                        <div className="skeleton-line mypage-loading-name" />
+                        <div className="skeleton-line mypage-loading-sub" />
+                        <div className="skeleton-line mypage-loading-sub2" />
+                    </div>
+                </div>
+                <div className="mypage-loading-stats">
+                    {[1, 2].map((i) => (
+                        <div key={i} className="mypage-loading-stat-item">
+                            <div className="skeleton-line mypage-loading-stat-num" />
+                            <div className="skeleton-line mypage-loading-stat-label" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
     }
 
     return (
