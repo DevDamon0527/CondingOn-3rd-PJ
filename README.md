@@ -217,7 +217,7 @@ cd client && npm install
 cd ../server && npm install
 ```
 
-### 환경변수 설정
+### 환경변수 설정 (로컬 실행)
 
 `server/.env` 파일을 생성하고 아래 값을 채워주세요.
 
@@ -235,10 +235,6 @@ SERVERURL=http://localhost:4000
 CLIENTURL=http://localhost:3000
 SECRETKEY=your-secret-key-32-chars-or-more
 
-# Cloudinary (이미지 업로드용)
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 `client/.env` 파일을 생성하세요.
