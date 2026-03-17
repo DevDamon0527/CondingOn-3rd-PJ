@@ -207,7 +207,7 @@ NaiClover는 외국어 학습자와 원어민이 **포스트·채팅·문법 교
 
 ```bash
 # 저장소 클론
-git clone https://github.com/JHSasdf/NaiClover.git
+git clone https://github.com/DevDamon0527/Nai_clova.git
 cd NaiClover
 
 # 클라이언트 의존성 설치
